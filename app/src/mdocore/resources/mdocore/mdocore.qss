@@ -1,0 +1,23 @@
+
+QTreeWidget#menuTreeWidget::item {height: 35px;}
+
+#labelDashboard { background: #fff }
+
+/*
+QTreeWidge#menuTreeWidget{font-weight: bold;}
+QTreeWidget#menuTreeWidget::item:selected {background: #1c8b86;border:none; color: white !important;}
+QTreeWidget#menuTreeWidget::item:hover { font-weight: bold; border:none}
+
+QTreeView#treeViewProject::item::selected {background: #1c8b86 !important;}
+
+/*
+
+QDockWidget::title {
+    font: bold;
+    text-align: left;
+    background: transparent;
+    padding-left: 10px;
+    border: 0px;
+}
+
+*/

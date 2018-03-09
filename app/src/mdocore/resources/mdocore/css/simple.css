@@ -1,0 +1,41 @@
+body {
+}
+
+h1 {
+    color: #114491;
+    font-size: 46px;
+}
+
+h2 {
+    padding-top: 30px;
+    color: #22519b;
+    font-size: 38px;
+}
+
+h3 {
+    color: #6690d1;
+    font-size: 28px;
+}
+
+h4 {
+    color: #97b2db;
+    font-size: 24px;
+}
+
+h5 {
+    color: #adb9cc;
+    font-size: 20px;
+}
+
+h6 {
+    color: #adb9cc;
+    font-size: 18px;
+}
+
+pre {
+    background: #333;
+    color: #fff;
+    display: block;
+    word-wrap: break-word;
+    padding: 10px;
+}

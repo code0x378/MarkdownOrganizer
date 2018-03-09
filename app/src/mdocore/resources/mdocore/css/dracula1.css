@@ -1,0 +1,89 @@
+/*
+Dracula CSS Theme - Style 1
+*/
+
+html {
+    font-size: 1em;
+}
+
+body {
+    color: #BCC2C9;
+    background: #3C4556;
+    font-size: 1em;
+    font-family: serif;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+h1, h2, h3, h4 {
+    margin: .7em 0 0.2em;
+    font-weight: inherit;
+    line-height: 1.1;
+    padding: 0;
+}
+
+h1 {
+    color: #50FA7B;
+    margin-top: 0;
+    font-size: 3em;
+}
+
+h2 {
+    color: #8BE9FD;
+    font-size: 2.4em;
+}
+
+h3 {
+    color: #FFB86C;
+    font-size: 1.8em;
+}
+
+h4 {
+    color: #BD93F9;
+    font-size: 1.414em;
+}
+
+h5 {
+    color: #69b6ca;
+}
+
+h6
+{
+    color: #d5995e;
+}
+
+a {
+    color: #47DD71;
+}
+
+code {
+    color: #fff;
+    border-radius: 10px;
+    background: #707a8d;
+}
+
+small, .font_small {
+    font-size: 0.707em;
+}
+
+th {
+    background: #3A3C4E;
+    padding: 1em;
+}
+
+blockquote {
+    color: #a5abb2;
+}
+
+hr {
+    border: 0;
+    border-top: 3px dashed #EA51B2;
+}
+
+pre {
+    background: #707a8d;
+    color: #fff;
+    display: block;
+    word-wrap: break-word;
+    padding: 10px;
+}

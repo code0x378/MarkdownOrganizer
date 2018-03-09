@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BrowserWindow</class>
+ <widget class="QMainWindow" name="BrowserWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>AppMainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+   </layout>
+  </widget>
+  <widget class="QToolBar" name="browserToolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="backAction"/>
+   <addaction name="forwardAction"/>
+   <addaction name="reloadAction"/>
+  </widget>
+  <action name="backAction">
+   <property name="icon">
+    <iconset resource="../../../../mdocore/resources/mdocore.qrc">
+     <normaloff>:/mdocore/icons/16px/arrow-left6.png</normaloff>:/mdocore/icons/16px/arrow-left6.png</iconset>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+   <property name="toolTip">
+    <string>Back</string>
+   </property>
+  </action>
+  <action name="forwardAction">
+   <property name="icon">
+    <iconset resource="../../../../mdocore/resources/mdocore.qrc">
+     <normaloff>:/mdocore/icons/16px/arrow-right7.png</normaloff>:/mdocore/icons/16px/arrow-right7.png</iconset>
+   </property>
+   <property name="text">
+    <string>Forward</string>
+   </property>
+  </action>
+  <action name="reloadAction">
+   <property name="icon">
+    <iconset resource="../../../../mdocore/resources/mdocore.qrc">
+     <normaloff>:/mdocore/icons/16px/loop4.png</normaloff>:/mdocore/icons/16px/loop4.png</iconset>
+   </property>
+   <property name="text">
+    <string>Reload</string>
+   </property>
+   <property name="toolTip">
+    <string>Reload</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../../../../mdocore/resources/mdocore.qrc"/>
+ </resources>
+ <connections/>
+</ui>

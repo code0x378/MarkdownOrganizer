@@ -1,0 +1,280 @@
+syntax: glob
+target/*
+.sass-cache/*
+*.log
+*.rpt
+*.db
+*.iml
+webapp/log/*
+Thumbs.db
+app/resources/webapp/tmp/*
+*/data/*.db
+*/logs/*.log
+*.rpt
+nt_18.1.bin
+nt_18.0.bin
+imdo_18.0.bin
+*.pyc
+temp/*
+*.tmp
+*.o
+cache/*
+.settings/*
+.project
+.classpath
+bin/play1/repository/*
+bin/play2/repository/*
+*/bower_components/*
+node_modules/*
+dev/temp
+target/*
+build/*
+dist/*
+server/static
+*/precompiled/*
+webapp/cntrack/precompiled/*
+webapp/cntrack/tmp/*
+*.pyc
+webapp/resources/*
+*.tsv
+*.hprof
+webapp/sanityCheckRegionSamples.txt
+*/.sass-cache/*
+
+dev/admin/.nb-gradle/profiles/private/aux-config
+.gradle/*
+gradlew.bat
+gradlew
+*.kate-swp
+*.pyc
+__pycache__
+gradle-wrapper.properties
+*/tmp/*
+nbproject*
+cgh/app/manifest.mf
+cgh/app/build.xml
+install.ico
+cgh/app/iq_settings.txt
+cgh/app/iq_registration.txt
+cgh/app/iq_license.txt
+
+
+# Project #
+
+
+# System #
+.DS_Store
+
+# Mercurial #
+.orig
+
+# Node #
+node_modules/
+
+# Grunt build #
+dist/
+
+# Bower #
+vendor/
+bower_components/
+public/system/lib
+.bower-cache/
+.bower-registry/
+.bower-tmp/
+.tmp/
+
+# IDE #
+nbproject/
+
+# User-specific stuff:
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+**/.idea/dictionaries
+**/.idea/vcs.xml
+**/.idea/jsLibraryMappings.xml
+
+# Sensitive or high-churn files:
+**/.idea/dataSources.ids
+**/.idea/dataSources.xml
+**/.idea/dataSources.local.xml
+**/.idea/sqlDataSources.xml
+**/.idea/dynamic.xml
+**/.idea/uiDesigner.xml
+
+# Gradle:
+.idea/gradle.xml
+.idea/libraries
+
+# Mongo Explorer plugin:
+.idea/mongoSettings.xml
+
+## File-based project format:
+*.iws
+
+
+labs/platform-qt/dist
+docs/*/public
+ant-build
+
+
+
+
+## User-specific files
+
+*.suo
+*.user
+*.sln.docstates
+
+## Build results
+
+[Dd]ebug/
+[Rr]elease/
+x64/
+build/
+[Oo]bj/
+
+## MSTest test Results
+
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.log
+*.scc
+
+## Visual C++ cache files
+
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.cachefile
+
+## Visual Studio profiler
+
+*.psess
+*.vsp
+*.vspx
+
+## Guidance Automation Toolkit
+
+*.gpState
+
+## ReSharper Ignores
+
+_ReSharper*/
+*.[Rr]e[Ss]harper
+
+## TeamCity Ignores
+_TeamCity*
+
+## DotCover Ignores
+
+*.dotCover
+
+## NCrunch Ignores
+
+*.ncrunch*
+.*crunch*.local.xml
+
+## Installshield output folder
+[Ee]xpress/
+
+## DocProject Ignores
+
+DocProject/buildhelp/
+DocProject/Help/*.HxT
+DocProject/Help/*.HxC
+DocProject/Help/*.hhc
+DocProject/Help/*.hhk
+DocProject/Help/*.hhp
+DocProject/Help/Html2
+DocProject/Help/html
+
+## Click-Once Ignores
+
+publish/
+
+## Publish Web Output
+
+*.Publish.xml
+*.pubxml
+
+## Windows Azure Build Ignores
+
+csx
+*.build.csdef
+
+## Windows Store Ignores
+
+AppPackages/
+
+## RIA/Silverlight projects
+
+Generated_Code/
+
+## SQL Server Ignores
+
+App_Data/*.mdf
+App_Data/*.ldf
+
+## Backup & Report Files when converting a solution
+## Not required, we have mercurial!
+
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+
+## Miscellaneous Ignores
+
+sql/
+*.Cache
+ClientBin/
+[Ss]tyle[Cc]op.*
+~$*
+*~
+*.dbmdl
+*.[Pp]ublish.xml
+*.pfx
+*.publishsettings
+
+## Windows Ignores
+
+$RECYCLE.BIN/
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.nb-gradle/*
+logs/*
+libs-temp/*
+classes/*
+app/test.bin.gz
+app/file.bin.gz
+app/.*
+.conf/*
+.idea/*
+.idea
+build-*
+app/installer/src/repository/*
+app/src/MarkdownOrganizer.pro.user.*

@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>mdocore/icons/app_16.png</file>
+        <file>mdocore/images/splash.png</file>
+        <file>mdocore/icons/app_32.png</file>
+        <file>mdocore/mdocore.qss</file>
+        <file>mdocore/fonts/fontawesome-4.7.0.ttf</file>
+        <file>mdocore/icons/app_192.png</file>
+        <file>mdocore/css/simple.css</file>
+        <file>mdocore/lang/mdo_en.qm</file>
+        <file>mdocore/lang/mdo_en.ts</file>
+        <file>mdocore/css/dark.css</file>
+        <file>mdocore/css/dracula1.css</file>
+        <file>mdocore/css/dracula2.css</file>
+        <file>mdocore/css/intellij.css</file>
+    </qresource>
+</RCC>

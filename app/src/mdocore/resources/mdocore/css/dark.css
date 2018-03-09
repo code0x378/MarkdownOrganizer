@@ -1,0 +1,48 @@
+body {
+    background-color:  #222;
+    color:  #ccc;
+    padding: 10px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 46px;
+}
+
+h2 {
+    padding-top: 30px;
+    color: #efefef;
+    font-size: 38px;
+}
+
+h3 {
+    color: #ccc;
+    font-size: 28px;
+}
+
+h4 {
+    color: #999;
+    font-size: 24px;
+}
+
+h5 {
+    color: #999;
+    font-size: 20px;
+}
+
+h6 {
+    color: #999;
+    font-size: 18px;
+}
+
+pre {
+    background: #666;
+    color: #fff;
+    display: block;
+    word-wrap: break-word;
+    padding: 10px;
+}
+
+QWebEngineView{
+border 10px solid #333;
+}
