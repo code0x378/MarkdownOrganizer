@@ -2,7 +2,7 @@
 title = "Content" 
 linktitle = "Content" 
 date = "2018-08-20" 
-author = "ThoughtLogix" 
+author = "LittleDogBigUniverse" 
 website = "" 
 tags = [  ] 
 categories =[  ] 

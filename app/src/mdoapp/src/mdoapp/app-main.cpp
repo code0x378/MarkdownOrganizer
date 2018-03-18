@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 ThoughtLogix
+* Copyright (C) 2016-2018 LittleDogBigUniverse
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -50,8 +50,8 @@ int main(int argc, char *argv[])
     /********************************************************
      * Application initialization
      ********************************************************/
-    MdoApplication::setOrganizationName("ThoughtLogix.");
-    MdoApplication::setOrganizationDomain("thoughtlogix.com");
+    MdoApplication::setOrganizationName("LittleDogBigUniverse.");
+    MdoApplication::setOrganizationDomain("littledogbiguniverse.com");
     MdoApplication::setApplicationName("MarkdownOrganizer");
     MdoApplication::setApplicationVersion("1.0.0");
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
      * Command Line Options
      ********************************************************/
     QCommandLineParser parser;
-    parser.setApplicationDescription("MarkdownOrganizer: Distributed Information Management by ThoughtLogix");
+    parser.setApplicationDescription("MarkdownOrganizer: Distributed Information Management by LittleDogBigUniverse");
     parser.addHelpOption();
     parser.addVersionOption();
     QCommandLineOption setLoggingLevelOption(QStringList() << "l" << "level",

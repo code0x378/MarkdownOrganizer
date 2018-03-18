@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 ThoughtLogix
+* Copyright (C) 2016-2018 LittleDogBigUniverse
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -54,15 +54,15 @@ QString CorePlugin::getVersion() const
 }
 QString CorePlugin::getPublisher() const
 {
-    return "ThoughtLogix";
+    return "LittleDogBigUniverse";
 }
 QString CorePlugin::getPublisherWebsite() const
 {
-    return "http://www.thoughtlogix.com";
+    return "http://www.littledogbiguniverse.com";
 }
 QString CorePlugin::getPublisherContact() const
 {
-    return "support@thoughtlogix.com";
+    return "support@littledogbiguniverse.com";
 }
 QString CorePlugin::getDescription() const
 {
@@ -70,7 +70,7 @@ QString CorePlugin::getDescription() const
 }
 QString CorePlugin::getCopyright() const
 {
-    return QString(tr("Copyright") + " 2018 ThoughtLogix.");
+    return QString(tr("Copyright") + " 2018 LittleDogBigUniverse.");
 }
 QString CorePlugin::getLicense() const
 {

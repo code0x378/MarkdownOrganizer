@@ -55,7 +55,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>copyright 2018 thoughtLogix - all rights reserved</string>
+          <string>copyright 2018 littledogbiguniverse - all rights reserved</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -68,7 +68,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>&lt;a href=&quot;http://www.thoughtlogix.com/&quot;&gt;www.thoughtlogix.com&lt;/a&gt;</string>
+          <string>&lt;a href=&quot;http://www.littledogbiguniverse.com/&quot;&gt;www.littledogbiguniverse.com&lt;/a&gt;</string>
          </property>
          <property name="textFormat">
           <enum>Qt::RichText</enum>

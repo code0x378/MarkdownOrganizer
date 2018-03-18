@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 ThoughtLogix
+* Copyright (C) 2016-2018 LittleDogBigUniverse
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -54,9 +54,6 @@ EditorToolWidget::EditorToolWidget(QWidget *parent) :
     projectChanged(APP->getActiveProject()->getName());
     displayTags();
     displayCategories();
-
-
-    //    ui->lineEditTitle->setFocusPolicy(Qt::StrongFocus);
     ui->lineEditTitle->setFocus();
 
     LOG_DEBUG("Editor tool loaded");
@@ -393,7 +390,6 @@ void EditorToolWidget::sendEmail(QString content)
                         SETTINGS_MANAGER->getInt("Email/Port", 0), SmtpClient::SslConnection);
         smtp.setUser(SETTINGS_MANAGER->getString("Email/User", ""));
         smtp.setPassword(SETTINGS_MANAGER->getString("Email/Password", ""));
-//        smtp.setPassword("h2zG9IkevjxC");
 
         MimeMessage message;
         message.setSender(new EmailAddress(APP->getActiveProject()->getEmailFrom()));

@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 ThoughtLogix
+* Copyright (C) 2016-2018 LittleDogBigUniverse
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ class Resource;
 class MiddlemanPlugin : public QObject, public IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "com.thoughtlogix.MiddlemanPlugin")
+    Q_PLUGIN_METADATA(IID "com.littledogbiguniverse.MiddlemanPlugin")
     Q_INTERFACES(IPlugin)
 
 public:

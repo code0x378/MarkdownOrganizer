@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 ThoughtLogix
+* Copyright (C) 2016-2018 LittleDogBigUniverse
 * 
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -82,7 +82,7 @@ private:
     QAction *settingsAction;
     QAction *projectAction;
     QAction *viewWelcomeAction;
-    QAction *viewThoughtlogixWebsiteAction;
+    QAction *viewLittleDogBigUniverseWebsiteAction;
     QAction *toggleCntrackWorkspaceAction;
     QAction *togglePreviewAction;
     QAction *toggleLogDockAction;

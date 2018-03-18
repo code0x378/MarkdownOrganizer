@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 ThoughtLogix
+* Copyright (C) 2016-2018 LittleDogBigUniverse
 * 
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -64,6 +64,6 @@ public:
     PluginData *data;
 };
 
-Q_DECLARE_INTERFACE(IPlugin, "com.thoughtlogix.IPlugin")
+Q_DECLARE_INTERFACE(IPlugin, "com.littledogbiguniverse.IPlugin")
 
 #endif // IPLUGIN

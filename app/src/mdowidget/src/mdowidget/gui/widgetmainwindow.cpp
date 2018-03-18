@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 ThoughtLogix
+* Copyright (C) 2016-2018 LittleDogBigUniverse
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -193,15 +193,15 @@ void WidgetMainWindow::addMainMenu()
     VERIFY(connect(aboutAction, SIGNAL(triggered()), this,
                    SLOT(showAboutDialog())));
 
-    viewThoughtlogixWebsiteAction = new QAction(
+    viewLittleDogBigUniverseWebsiteAction = new QAction(
         QApplication::translate("AppMainWindow",
-                                "visit thoughtlogix.com", 0), this);
-    viewThoughtlogixWebsiteAction->setObjectName("viewThoughtlogixWebsiteAction");
-    connect(viewThoughtlogixWebsiteAction, SIGNAL(triggered()), this,
+                                "visit littledogbiguniverse.com", 0), this);
+    viewLittleDogBigUniverseWebsiteAction->setObjectName("viewLittleDogBigUniverseWebsiteAction");
+    connect(viewLittleDogBigUniverseWebsiteAction, SIGNAL(triggered()), this,
             SLOT(openWebBrowser()));
 
     helpMenu = menuBar()->addMenu(tr("&help"));
-    helpMenu->addAction(viewThoughtlogixWebsiteAction);
+    helpMenu->addAction(viewLittleDogBigUniverseWebsiteAction);
     helpMenu->addSeparator();
     helpMenu->addAction(aboutAction);
 }
@@ -252,8 +252,8 @@ void WidgetMainWindow::openWebBrowser()
     QString name = pObject->objectName();
     QString url = "http://www.google.com";
 
-    if (name == "viewThoughtlogixWebsiteAction") {
-        url = "http://www.thoughtlogix.com";
+    if (name == "viewLittleDogBigUniverseWebsiteAction") {
+        url = "http://www.littledogbiguniverse.com";
     } else {
         url = "http://www.google.com";
     }
