@@ -71,7 +71,7 @@ void PreviewDockWidget::updatePreview(QString htmlText)
 void PreviewDockWidget::loadCss()
 {
     QString name(":/mdocore/css/%1.css");
-    name = name.arg(SETTINGS_MANAGER->getString("Interface/Preview/ColorSchemme",
+    name = name.arg(SETTINGS_MANAGER->getString("Interface/ColorScheme",
                                                 "Dark")).toLower();
     QFile file(name);
     if (!file.open(QIODevice::ReadOnly)) {

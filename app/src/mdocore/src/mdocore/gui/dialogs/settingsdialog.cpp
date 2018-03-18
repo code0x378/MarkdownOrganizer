@@ -60,7 +60,9 @@ void SettingsDialog::handleTreeMenuSelection(QTreeWidgetItem *item, int idx)
 
 void SettingsDialog::accept()
 {
-    SETTINGS_MANAGER->setSetting("Interface/Preview/ColorSchemme",
+    SETTINGS_MANAGER->setSetting("Interface/Theme",
+                                 ui->themeComboBox->currentText());
+    SETTINGS_MANAGER->setSetting("Interface/ColorScheme",
                                  ui->colorSchemeComboBox->currentText());
 
     SETTINGS_MANAGER->setSetting("Email/Server",
@@ -81,12 +83,18 @@ void SettingsDialog::loadDefaults()
     QStringList colorSchemes;
     colorSchemes  << "Simple" << "Dark" << "Dracula1" << "Dracula2" << "Intellij";
     ui->colorSchemeComboBox->addItems(colorSchemes);
+
+    QStringList themes;
+    themes  << "Native" << "Fusion" << "Fusion - Dark";
+    ui->themeComboBox->addItems(themes);
 }
 
 void  SettingsDialog::loadSettings()
 {
+    ui->themeComboBox->setCurrentText(
+        SETTINGS_MANAGER->getString("Interface/Theme", "Fusion"));
     ui->colorSchemeComboBox->setCurrentText(
-        SETTINGS_MANAGER->getString("Interface/Preview/ColorSchemme", "Dark"));
+        SETTINGS_MANAGER->getString("Interface/ColorScheme", "Dark"));
 
     ui->emailServerLineEdit->setText(
         SETTINGS_MANAGER->getString("Email/Server", ""));
