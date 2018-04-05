@@ -394,7 +394,7 @@ void EditorToolWidget::sendEmail(QString content)
         MimeMessage message;
         message.setSender(new EmailAddress(APP->getActiveProject()->getEmailFrom()));
         message.addRecipient(new EmailAddress(APP->getActiveProject()->getEmailTo()));
-        message.setSubject("Document Saved");
+        message.setSubject(QString("Markdown Doc from %1").arg(APP->getActiveProject()->getName()));
 
         MimeText text;
         text.setText(content);

@@ -17,8 +17,8 @@
 */
 
 
-#ifndef DOTSYNERGYPLUGIN_H
-#define DOTSYNERGYPLUGIN_H
+#ifndef MDOPLUGIN_H
+#define MDOPLUGIN_H
 
 #include <QtPlugin>
 #include <QObject>
@@ -49,4 +49,4 @@ public:
     QString getLicense() const;
 };
 
-#endif // DOTSYNERGYPLUGIN_H
+#endif // MDOPLUGIN_H

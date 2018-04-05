@@ -156,7 +156,7 @@ QString MdoApplication::getSystemMemory()
 void MdoApplication::logStartupMessage()
 {
     LOG_INFO("---------------------------------------------------");
-    LOG_INFO("DOTSYNERGY STARTED");
+    LOG_INFO("MARKDOWN ORGANIZER STARTED");
     LOG_INFO("---------------------------------------------------");
     LOG_INFO("App Dir: " + qApp->applicationDirPath());
     LOG_INFO("Config Dir: " + *getConfigDirectory());

@@ -506,8 +506,7 @@ void AppMainWindow::launchMainApp()
 
 void AppMainWindow::readUISettings()
 {
-
-    if (SETTINGS_MANAGER->getInt("Gui/x") >= 0) {
+    if (SETTINGS_MANAGER->getInt("Gui/x") > 0) {
         int x = SETTINGS_MANAGER->getInt("Gui/x");
         int y = SETTINGS_MANAGER->getInt("Gui/y");
         int height = SETTINGS_MANAGER->getInt("Gui/height");
