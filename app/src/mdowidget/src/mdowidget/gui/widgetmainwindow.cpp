@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 LittleDogBigUniverse
+* Copyright (C) 2016-2018 JeffSmithDev
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -77,7 +77,7 @@ WidgetMainWindow::WidgetMainWindow(QWidget *parent) :
     displayTags();
     displayCategories();
 
-    ui->lineEditAuthor->setText("LittleDogBigUniverse");
+    ui->lineEditAuthor->setText("JeffSmithDev");
     ui->lineEditDate->setText(QDate::currentDate().toString("yyyy-MM-dd"));
 
 
@@ -193,15 +193,15 @@ void WidgetMainWindow::addMainMenu()
     VERIFY(connect(aboutAction, SIGNAL(triggered()), this,
                    SLOT(showAboutDialog())));
 
-    viewLittleDogBigUniverseWebsiteAction = new QAction(
+    viewJeffSmithDevWebsiteAction = new QAction(
         QApplication::translate("AppMainWindow",
-                                "visit littledogbiguniverse.com", 0), this);
-    viewLittleDogBigUniverseWebsiteAction->setObjectName("viewLittleDogBigUniverseWebsiteAction");
-    connect(viewLittleDogBigUniverseWebsiteAction, SIGNAL(triggered()), this,
+                                "visit JeffSmithDev.com", 0), this);
+    viewJeffSmithDevWebsiteAction->setObjectName("viewJeffSmithDevWebsiteAction");
+    connect(viewJeffSmithDevWebsiteAction, SIGNAL(triggered()), this,
             SLOT(openWebBrowser()));
 
     helpMenu = menuBar()->addMenu(tr("&help"));
-    helpMenu->addAction(viewLittleDogBigUniverseWebsiteAction);
+    helpMenu->addAction(viewJeffSmithDevWebsiteAction);
     helpMenu->addSeparator();
     helpMenu->addAction(aboutAction);
 }
@@ -252,8 +252,8 @@ void WidgetMainWindow::openWebBrowser()
     QString name = pObject->objectName();
     QString url = "http://www.google.com";
 
-    if (name == "viewLittleDogBigUniverseWebsiteAction") {
-        url = "http://www.littledogbiguniverse.com";
+    if (name == "viewJeffSmithDevWebsiteAction") {
+        url = "http://www.JeffSmithDev.com";
     } else {
         url = "http://www.google.com";
     }
@@ -392,7 +392,7 @@ void WidgetMainWindow::handleSave()
 
 void WidgetMainWindow::handleReset()
 {
-    ui->lineEditAuthor->setText("LittleDogBigUniverse");
+    ui->lineEditAuthor->setText("JeffSmithDev");
     ui->lineEditDate->setText(QDate::currentDate().toString("yyyy-MM-dd"));
     ui->lineEditTitle->setText("");
     ui->lineEditWebsite->setText("");

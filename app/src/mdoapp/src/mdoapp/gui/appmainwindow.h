@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 LittleDogBigUniverse
+* Copyright (C) 2016-2018 JeffSmithDev
 * 
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -82,7 +82,7 @@ private:
     QAction *settingsAction;
     QAction *projectAction;
     QAction *viewWelcomeAction;
-    QAction *viewLittleDogBigUniverseWebsiteAction;
+    QAction *viewJeffSmithDevWebsiteAction;
     QAction *toggleCntrackWorkspaceAction;
     QAction *togglePreviewAction;
     QAction *toggleLogDockAction;

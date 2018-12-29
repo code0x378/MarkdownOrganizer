@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 LittleDogBigUniverse
+* Copyright (C) 2016-2018 JeffSmithDev
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ EditorToolWidget::EditorToolWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->lineEditAuthor->setText("LittleDogBigUniverse");
+    ui->lineEditAuthor->setText("Jeff Smith");
     ui->lineEditDate->setText(QDate::currentDate().toString("yyyy-MM-dd"));
     addSignalsAndSlots();
     projectChanged(APP->getActiveProject()->getName());
@@ -332,7 +332,7 @@ void EditorToolWidget::handleReset()
     ui->editorTabWidget->setHidden(false);
 
     filePath = "";
-    ui->lineEditAuthor->setText("LittleDogBigUniverse");
+    ui->lineEditAuthor->setText("Jeff Smith");
     ui->lineEditDate->setText(QDate::currentDate().toString("yyyy-MM-dd"));
     ui->lineEditTitle->setText("");
     ui->lineEditWebsite->setText("");
@@ -364,9 +364,9 @@ void EditorToolWidget::updatePreview()
     emit htmlUpdated(htmlText);
 
     //    //view->setHtml(QtUtils::wrapInHTMLDoc(htmlText, this->css));
-    //    isDirty = true;
+        isDirty = true;
 
-    //    LOG_DEBUG(QString("Preview rendered in: %1 ms").arg(t.elapsed()));
+        LOG_DEBUG(QString("Preview rendered in: %1 ms").arg(t.elapsed()));
 }
 
 

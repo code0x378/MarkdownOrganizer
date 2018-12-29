@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 LittleDogBigUniverse
+* Copyright (C) 2016-2018 JeffSmithDev
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -56,15 +56,15 @@ QString MiddlemanPlugin::getVersion() const
 }
 QString MiddlemanPlugin::getPublisher() const
 {
-    return "LittleDogBigUniverse";
+    return "JeffSmithDev";
 }
 QString MiddlemanPlugin::getPublisherWebsite() const
 {
-    return "http://www.littledogbiguniverse.com";
+    return "http://www.JeffSmithDev.com";
 }
 QString MiddlemanPlugin::getPublisherContact() const
 {
-    return "support@littledogbiguniverse.com";
+    return "support@JeffSmithDev.com";
 }
 QString MiddlemanPlugin::getDescription() const
 {
@@ -72,7 +72,7 @@ QString MiddlemanPlugin::getDescription() const
 }
 QString MiddlemanPlugin::getCopyright() const
 {
-    return QString(tr("Copyright") + " 2018 LittleDogBigUniverse.");
+    return QString(tr("Copyright") + " 2018 JeffSmithDev.");
 }
 QString MiddlemanPlugin::getLicense() const
 {

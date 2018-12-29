@@ -1,6 +1,6 @@
 include(../defaults.pri)
 
-TARGET = "Markdown Organizer"
+TARGET = "MarkdownOrganizer.exe"
 QT += core gui network widgets printsupport help webenginewidgets
 TEMPLATE = app
 INCLUDEPATH += src
@@ -73,7 +73,7 @@ DEPENDPATH += $$PWD/../mdocore
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../lib/SmtpClient/release/ -lSmtpClient
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../lib/SmtpClient/debug/ -lSmtpClient
-else:unix: LIBS += -L$$OUT_PWD/../lib/SmtpClient/ -lSmtpClient
+else:unix: LIBS += -L$$OUT_PWD/../lib/SmtpClient/ -lSMTPClient
 
 INCLUDEPATH += $$PWD/../lib/SmtpClient
 DEPENDPATH += $$PWD/../lib/SmtpClient
