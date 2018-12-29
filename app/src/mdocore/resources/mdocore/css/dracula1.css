@@ -25,22 +25,22 @@ h1, h2, h3, h4 {
 h1 {
     color: #50FA7B;
     margin-top: 0;
-    font-size: 3em;
+    font-size: 2em;
 }
 
 h2 {
     color: #8BE9FD;
-    font-size: 2.4em;
+    font-size: 1.8em;
 }
 
 h3 {
     color: #FFB86C;
-    font-size: 1.8em;
+    font-size: 1.4em;
 }
 
 h4 {
     color: #BD93F9;
-    font-size: 1.414em;
+    font-size: 1.2em;
 }
 
 h5 {

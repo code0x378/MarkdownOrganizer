@@ -6,33 +6,33 @@ body {
 
 h1 {
     color: #fff;
-    font-size: 46px;
+    font-size: 28px;
 }
 
 h2 {
     padding-top: 30px;
     color: #efefef;
-    font-size: 38px;
+    font-size: 24px;
 }
 
 h3 {
     color: #ccc;
-    font-size: 28px;
+    font-size: 18px;
 }
 
 h4 {
     color: #999;
-    font-size: 24px;
+    font-size: 16px;
 }
 
 h5 {
     color: #999;
-    font-size: 20px;
+    font-size: 14px;
 }
 
 h6 {
     color: #999;
-    font-size: 18px;
+    font-size: 14px;
 }
 
 pre {
