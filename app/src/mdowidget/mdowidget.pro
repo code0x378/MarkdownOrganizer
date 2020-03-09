@@ -1,6 +1,5 @@
 include(../defaults.pri)
 
-TARGET = "MDOWidget"
 QT += core gui network widgets printsupport help opengl qml quick quickwidgets
 TEMPLATE = app
 INCLUDEPATH += src
@@ -27,6 +26,16 @@ FORMS += \
 
 RESOURCES += \
     	resources/mdowidget.qrc
+
+win32 {
+    TARGET = "MarkdownOrganizerWidget.exe"
+}
+macx {
+    TARGET = "MarkdownOrganizerWidget"
+}
+linux {
+    TARGET = "MarkdownOrganizerWidget"
+}
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../mdocore/release/ -lmdocore
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../mdocore/debug/ -lmdocore

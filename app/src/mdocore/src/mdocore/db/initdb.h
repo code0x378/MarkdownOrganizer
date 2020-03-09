@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 ThoughtLogix
+* Copyright (C) 2016-2020 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -170,17 +170,186 @@ QSqlError initDb()
         return q.lastError();
 
     QVariant knowledgeProjectId = addProject(q,
-                                             QLatin1String("Sample Project"),
-                                             QLatin1String("Sample Markdown project"),
-                                             QLatin1String("resources/sampleproject"),
-                                             QLatin1String("ls"),
-                                             QLatin1String("Tag1,Tag2,Tag3,Tag4,Tag5,Tag6,Tag7,Tag8"),
-                                             QLatin1String("Cat1,Cat2,Cat3"),
+                                             QLatin1String("LDBU - Knowledge"),
+                                             QLatin1String("Little Dog Big Universe Knowledge Repository"),
+                                             QLatin1String("c:\\data\\dev\\syntiva\\manicdev-www\\webapp\\content\\knowledge"),
+                                             QLatin1String("cd c:\\data\\dev\\syntiva\\manicdev-www\\bin && .\\deploy-s3.bat"),
+                                             QLatin1String("Linux, Arch, Ubuntu, Gnome, Kde, Qt, Java, JavaScript, Python, Kotlin, OSX, Windows, VCS, Cloud, Database"),
+                                             QLatin1String("SysAdmin, Development"),
                                              blogProjectTypeId,
-                                             1,
+                                             0,
                                              "Hugo,",
-                                             "user@example.com",
-                                             "user@example.com");
+                                             "jsmith@syntiva.com",
+                                             "jsmith@syntiva.com");
+    QVariant coolstuffProjectId = addProject(q,
+                                             QLatin1String("LDBU - Coolstuff"),
+                                             QLatin1String("Little Dog Big Universe Coolstuff"),
+                                             QLatin1String("c:\\data\\dev\\syntiva\\manicdev-www\\webapp\\content\\coolstuff"),
+                                             QLatin1String("cd c:\\data\\dev\\syntiva\\manicdev-www\\bin && .\\deploy-s3.bat"),
+                                             QLatin1String("Apps, Open Source, Tools, Libraries, Linux, OSX, Windows, Robotics"),
+                                             QLatin1String("SysAdmin, Development, Other"),
+                                             linksProjectTypeId,
+                                             0,
+                                             "Hugo, ",
+                                             "jsmith@syntiva.com",
+                                             "jsmith@syntiva.com");
+    QVariant notesProjectId = addProject(q,
+                                         QLatin1String("Per - Notes"),
+                                         QLatin1String("Basic note taking"),
+                                         QLatin1String("c:\\data\\personal\\notes"),
+                                         QLatin1String("dir"),
+                                         QLatin1String("ArfArfBebe, code0x378, infoQuant, Shopping, Todo"),
+                                         QLatin1String("Personal, Work"),
+                                         notesProjectTypeId,
+                                         1,
+                                         "Hugo,Mdo",
+                                         "jsmith@syntiva.com",
+                                         "jsmith@syntiva.com");
+
+    QVariant helpProjectId = addProject(q,
+                                        QLatin1String("MDO - Help"),
+                                        QLatin1String("markdownOrganizer Help System"),
+                                        QLatin1String("c:\\data\\dev\\syntiva\\markdownorganizer\\app\\src\\help"),
+                                        QLatin1String("dir"),
+                                        QLatin1String("Gui, Installation, Settings"),
+                                        QLatin1String("Free, Pro, Enterprise"),
+                                        helpProjectTypeId,
+                                        0,
+                                        "Hugo, ",
+                                        "jsmith@syntiva.com",
+                                        "jsmith@syntiva.com");
+
+    QVariant gfHelpProjectId = addProject(q,
+                                          QLatin1String("GF - Help"),
+                                          QLatin1String("GF Help System"),
+                                          QLatin1String("c:\\data\\dev\\infoquant\\gf\\gf-help\\src\\main\\resources\\help\\docs"),
+                                          QLatin1String("dir"),
+                                          QLatin1String("Gui, Installation, Settings, Database, Security, Admin, Analytics"),
+                                          QLatin1String("GenomeFusion, Genomius, cnTrack"),
+                                          helpProjectTypeId,
+                                          0,
+                                          "Hugo, ",
+                                          "jsmith@syntiva.com",
+                                          "jeff@infoquant.com");
+    QVariant mitoProjectId = addProject(q,
+                                        QLatin1String("Mito - Website"),
+                                        QLatin1String("Mitotech static website"),
+                                        QLatin1String("c:\\data\\dev\\syntiva\\mitotechpharma-www\\webapp\\hugo\\content"),
+                                        QLatin1String("dir"),
+                                        QLatin1String("SKQ, Biotech, Conference, Dry Eye"),
+                                        QLatin1String("News, Events"),
+                                        blogProjectTypeId,
+                                        0,
+                                        "Hugo, ",
+                                        "jsmith@syntiva.com",
+                                        "jeff@infoquant.com");
+    QVariant skqProjectId = addProject(q,
+                                       QLatin1String("SKQ - Website"),
+                                       QLatin1String("Skq static website"),
+                                       QLatin1String("c:\\data\\dev\\syntiva\\skq-www\\webapp\\hugo\\content"),
+                                       QLatin1String("dir"),
+                                       QLatin1String("SKQ, Biotech, Conference, Dry Eye, Mitotech"),
+                                       QLatin1String("News, Events, Publications"),
+                                       blogProjectTypeId,
+                                       0,
+                                       "Hugo, ",
+                                       "jsmith@syntiva.com",
+                                       "jeff@infoquant.com");
+
+
+
+
+
+
+
+
+
+    QVariant knowledgeProjectOSXId = addProject(q,
+                                                QLatin1String("LDBU (osx) - Knowledge"),
+                                                QLatin1String("Little Dog Big Universe Knowledge Repository"),
+                                                QLatin1String("/Users/jeff/data/dev/syntiva/code0x378-www/webapp/content/knowledge"),
+                                                QLatin1String("cd /Users/jeff/data/dev/syntiva/code0x378-www/bin && ./deploy-s3.sh"),
+                                                QLatin1String("Linux, Arch, Ubuntu, Gnome, Kde, Qt, Java, JavaScript, Python, Kotlin, OSX, Windows, VCS, Cloud, Database"),
+                                                QLatin1String("SysAdmin, Development"),
+                                                blogProjectTypeId,
+                                                0,
+                                                "Hugo,",
+                                                "jsmith@syntiva.com",
+                                                "jsmith@syntiva.com");
+    QVariant coolstuffProjectOSXId = addProject(q,
+                                                QLatin1String("LDBU (osx) - Coolstuff"),
+                                                QLatin1String("Little Dog Big Universe Coolstuff"),
+                                                QLatin1String("/Users/jeff/data/dev/syntiva/code0x378-www/webapp/content/coolstuff"),
+                                                QLatin1String("cd /Users/jeff/data/dev/syntiva/code0x378-www/bin && ./deploy-s3.sh"),
+                                                QLatin1String("Apps, Open Source, Tools, Libraries, Linux, OSX, Windows, Robotics"),
+                                                QLatin1String("SysAdmin, Development, Other"),
+                                                linksProjectTypeId,
+                                                0,
+                                                "Hugo, ",
+                                                "jsmith@syntiva.com",
+                                                "jsmith@syntiva.com");
+    QVariant notesProjectOSXId = addProject(q,
+                                            QLatin1String("Per (osx) - Notes"),
+                                            QLatin1String("Basic note taking"),
+                                            QLatin1String("/Users/jeff/data/personal/notes"),
+                                            QLatin1String("ls"),
+                                            QLatin1String("ArfArfBebe, code0x378, infoQuant, Shopping, Todo"),
+                                            QLatin1String("Personal, Work"),
+                                            notesProjectTypeId,
+                                            1,
+                                            "Hugo,Mdo",
+                                            "jsmith@syntiva.com",
+                                            "jsmith@syntiva.com");
+
+    QVariant helpProjectOSXId = addProject(q,
+                                           QLatin1String("MDO (osx) - Help"),
+                                           QLatin1String("markdownOrganizer Help System"),
+                                           QLatin1String("/Users/jeff/data/dev/syntiva/markdownorganizer/app/src/resources/help"),
+                                           QLatin1String("dir"),
+                                           QLatin1String("Gui, Installation, Settings"),
+                                           QLatin1String("Free, Pro, Enterprise"),
+                                           helpProjectTypeId,
+                                           0,
+                                           "Hugo, ",
+                                           "jsmith@syntiva.com",
+                                           "jsmith@syntiva.com");
+
+    QVariant gfHelpProjectOSXId = addProject(q,
+                                             QLatin1String("GF (osx) - Help"),
+                                             QLatin1String("GF Help System"),
+                                             QLatin1String("/Users/jeff/data/dev/infoquant/gf/gf-help/src/main/resources/help/docs"),
+                                             QLatin1String("ls"),
+                                             QLatin1String("Gui, Installation, Settings, Database, Security, Admin, Analytics"),
+                                             QLatin1String("GenomeFusion, Genomius, cnTrack"),
+                                             helpProjectTypeId,
+                                             0,
+                                             "Hugo, ",
+                                             "jsmith@syntiva.com",
+                                             "jeff@infoquant.com");
+    QVariant mitoProjectOSXId = addProject(q,
+                                           QLatin1String("Mito (osx) - Website"),
+                                           QLatin1String("Mitotech static website"),
+                                           QLatin1String("/Users/jeff/data/dev/syntiva/mitotechpharma-www/webapp/hugo/content"),
+                                           QLatin1String("ls"),
+                                           QLatin1String("SKQ, Biotech, Conference, Dry Eye"),
+                                           QLatin1String("News, Events"),
+                                           blogProjectTypeId,
+                                           0,
+                                           "Hugo, ",
+                                           "jsmith@syntiva.com",
+                                           "jeff@infoquant.com");
+    QVariant skqProjectOSXId = addProject(q,
+                                          QLatin1String("SKQ (osx) - Website"),
+                                          QLatin1String("Skq static website"),
+                                          QLatin1String("/Users/jeff/data/dev/syntiva/skq-www/webapp/hugo/content"),
+                                          QLatin1String("ls"),
+                                          QLatin1String("SKQ, Biotech, Conference, Dry Eye, Mitotech"),
+                                          QLatin1String("News, Events, Publications"),
+                                          blogProjectTypeId,
+                                          0,
+                                          "Hugo, ",
+                                          "jsmith@syntiva.com",
+                                          "jeff@infoquant.com");
 
     /********************************************************
      * Resource

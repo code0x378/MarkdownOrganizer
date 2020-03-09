@@ -1,6 +1,5 @@
 include(../defaults.pri)
 
-TARGET = "MarkdownOrganizer.exe"
 QT += core gui network widgets printsupport help webenginewidgets
 TEMPLATE = app
 INCLUDEPATH += src
@@ -63,6 +62,15 @@ OTHER_FILES +=
 RESOURCES += \
     resources/mdoapp.qrc
 
+win32 {
+    TARGET = "MarkdownOrganizer.exe"
+}
+macx {
+    TARGET = "MarkdownOrganizer"
+}
+linux {
+    TARGET = "MarkdownOrganizer"
+}
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../mdocore/release/ -lmdocore
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../mdocore/debug/ -lmdocore

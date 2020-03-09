@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 JeffSmithDev
+* Copyright (C) 2016-2020 code0x378
 * 
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -99,7 +99,7 @@ void PluginManager::setPluginList(const QList<IPlugin *> &value)
 IPlugin *PluginManager::getActivePlugin()
 {
     foreach (IPlugin *plugin,  pluginList) {
-        if (plugin->getName() == "Hugo") {
+        if (plugin->getName() == "Statica") {
             return plugin;
         }
     }

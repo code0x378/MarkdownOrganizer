@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 JeffSmithDev
+* Copyright (C) 2016-2020 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -54,15 +54,15 @@ QString CorePlugin::getVersion() const
 }
 QString CorePlugin::getPublisher() const
 {
-    return "JeffSmithDev";
+    return "code0x378";
 }
 QString CorePlugin::getPublisherWebsite() const
 {
-    return "http://www.JeffSmithDev.com";
+    return "http://www.code0x378.com";
 }
 QString CorePlugin::getPublisherContact() const
 {
-    return "support@JeffSmithDev.com";
+    return "support@code0x378.com";
 }
 QString CorePlugin::getDescription() const
 {
@@ -70,7 +70,7 @@ QString CorePlugin::getDescription() const
 }
 QString CorePlugin::getCopyright() const
 {
-    return QString(tr("Copyright") + " 2018 JeffSmithDev.");
+    return QString(tr("Copyright") + " 2020 code0x378.");
 }
 QString CorePlugin::getLicense() const
 {

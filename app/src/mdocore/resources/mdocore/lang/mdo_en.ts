@@ -19,12 +19,12 @@
     </message>
     <message>
         <location filename="../../../src/mdocore/gui/dialogs/aboutdialog.ui" line="58"/>
-        <source>copyright 2018 littledogbiguniverse - all rights reserved</source>
-        <translation>Copyright 2018 LittleDogBigUniverse - All rights reserved</translation>
+        <source>copyright 2020 code0x378 - all rights reserved</source>
+        <translation>Copyright 2020 code0x378 - All rights reserved</translation>
     </message>
     <message>
         <location filename="../../../src/mdocore/gui/dialogs/aboutdialog.ui" line="71"/>
-        <source>&lt;a href=&quot;http://www.littledogbiguniverse.com/&quot;&gt;www.littledogbiguniverse.com&lt;/a&gt;</source>
+        <source>&lt;a href=&quot;http://www.code0x378.com/&quot;&gt;www.code0x378.com&lt;/a&gt;</source>
         <translation></translation>
     </message>
     <message>
@@ -228,8 +228,8 @@
     <message>
         <location filename="../../../../mdoapp/src/mdoapp/gui/appmainwindow.cpp" line="233"/>
         <location filename="../../../../mdowidget/src/mdowidget/gui/widgetmainwindow.cpp" line="197"/>
-        <source>visit littledogbiguniverse.com</source>
-        <translation>Visit littledogbiguniverse.com</translation>
+        <source>visit code0x378.com</source>
+        <translation>Visit code0x378.com</translation>
     </message>
     <message>
         <location filename="../../../../mdoapp/src/mdoapp/gui/appmainwindow.cpp" line="204"/>
@@ -242,8 +242,8 @@
         <translation type="vanished">Panels</translation>
     </message>
     <message>
-        <source>Visit littledogbiguniverse.com</source>
-        <translation type="vanished">Visit littledogbiguniverse.com</translation>
+        <source>Visit code0x378.com</source>
+        <translation type="vanished">Visit code0x378.com</translation>
     </message>
     <message>
         <source>Help</source>

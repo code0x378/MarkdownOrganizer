@@ -6,4 +6,5 @@ SUBDIRS = \
     mdoplugin \
     coreplugin \
     hugoplugin \
+    staticaplugin \
     middlemanplugin

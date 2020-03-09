@@ -1,8 +1,8 @@
 +++ 
 title = "Content" 
 linktitle = "Content" 
-date = "2018-08-20" 
-author = "LittleDogBigUniverse" 
+date = "2020-08-20" 
+author = "code0x378" 
 website = "" 
 tags = [  ] 
 categories =[  ] 

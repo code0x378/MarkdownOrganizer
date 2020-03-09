@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 JeffSmithDev
+* Copyright (C) 2016-2020 code0x378
 * 
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@ SettingsManager::SettingsManager()
     settings = new QSettings(*APP->getSettingsFile(), QSettings::IniFormat);
 }
 
-SettingsManager *SettingsManager::settingsManager = 0;
+SettingsManager *SettingsManager::settingsManager = nullptr;
 SettingsManager *SettingsManager::instance()
 {
     static QMutex mutex;

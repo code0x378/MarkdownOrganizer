@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 JeffSmithDev
+* Copyright (C) 2016-2020 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -50,8 +50,8 @@ int main(int argc, char *argv[])
      * Application initialization
      ********************************************************/
     MdoApplication app(argc, argv);
-    MdoApplication::setOrganizationName("JeffSmithDev.");
-    MdoApplication::setOrganizationDomain("JeffSmithDev.com");
+    MdoApplication::setOrganizationName("code0x378.");
+    MdoApplication::setOrganizationDomain("code0x378.com");
     MdoApplication::setApplicationName("MarkdownOrganizer");
     MdoApplication::setApplicationVersion("1.0.0");
     app.init();
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
      * Command Line Options
      ********************************************************/
     QCommandLineParser parser;
-    parser.setApplicationDescription("MarkdownOrganizer: Distributed Information Management by JeffSmithDev");
+    parser.setApplicationDescription("MarkdownOrganizer: Distributed Information Management by code0x378");
     parser.addHelpOption();
     parser.addVersionOption();
     QCommandLineOption setLoggingLevelOption(QStringList() << "l" << "level",

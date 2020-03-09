@@ -80,7 +80,8 @@ HEADERS += \
     src/mdocore/lib/hoedown/src/version.h \
     src/mdocore/lib/qt-mustache/mustache.h \
     src/mdocore/lib/QtAwesome/QtAwesome/QtAwesome.h \
-    src/mdocore/lib/QtAwesome/QtAwesome/QtAwesomeAnim.h
+    src/mdocore/lib/QtAwesome/QtAwesome/QtAwesomeAnim.h \
+    src/mdocore/gui/dialogs/projecttablemodel.h
 
 SOURCES += \
     src/mdocore/util/qtutils.cpp \
@@ -145,7 +146,8 @@ SOURCES += \
     src/mdocore/lib/hoedown/src/html_blocks.c \
     src/mdocore/lib/hoedown/src/html_smartypants.c \
     src/mdocore/lib/hoedown/src/stack.c \
-    src/mdocore/lib/hoedown/src/version.c
+    src/mdocore/lib/hoedown/src/version.c \
+    src/mdocore/gui/dialogs/projecttablemodel.cpp
 
 FORMS += \
     src/mdocore/gui/dialogs/aboutdialog.ui \

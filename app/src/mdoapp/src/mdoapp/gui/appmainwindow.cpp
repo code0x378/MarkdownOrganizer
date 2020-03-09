@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 JeffSmithDev
+* Copyright (C) 2016-2020 code0x378
 * 
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -231,7 +231,7 @@ void AppMainWindow::setupMainMenu()
                    SLOT(showHelpWindow())));
 
     viewJeffSmithDevWebsiteAction = new QAction(tr(
-                                                    "visit JeffSmithDev.com", 0), this);
+                                                    "visit code0x378.com", 0), this);
     viewJeffSmithDevWebsiteAction->setObjectName("viewJeffSmithDevWebsiteAction");
     connect(viewJeffSmithDevWebsiteAction, SIGNAL(triggered()), this,
             SLOT(openWebBrowser()));
@@ -461,7 +461,7 @@ void AppMainWindow::openWebBrowser()
     QString url = "http://www.google.com";
 
     if (name == "viewJeffSmithDevWebsiteAction") {
-        url = "http://www.JeffSmithDev.com";
+        url = "http://www.code0x378.com";
     } else if (name == "viewGenomiusWebsiteAction") {
         url = "http://www.genomius.com";
     }
@@ -498,7 +498,7 @@ void AppMainWindow::viewHistory()
 void AppMainWindow::launchMainApp()
 {
     QString path = QCoreApplication::applicationDirPath();
-    path.append("MDOWidget");
+    path.append("MarkdownOrganizerWidget");
 
     QProcess process;
     process.startDetached(path, QStringList());

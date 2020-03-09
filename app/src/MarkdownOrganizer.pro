@@ -28,7 +28,8 @@ win32 {
     copydata.commands = $$quote(cmd /c xcopy /S /I /Y $${PWD_WIN}\\resources $${DESTDIR_WIN})\\..\\dist\\dist-apps\\resources
 }
 macx {
-    copydata.commands = $(COPY_DIR) $$PWD/resources $$PWD/../dist/dist-apps/Markdown\ Organizer.app/Contents/MacOS/
+    copydata.commands = $(COPY_DIR) $$PWD/resources $$PWD/../dist/dist-apps/MarkdownOrganizer.app/Contents/MacOS/
+#    copydata.commands = $(COPY_DIR) $$PWD/resources $$PWD/../dist/dist-apps
 }
 linux {
     copydata.commands = $(COPY_DIR) $$PWD/resources $$PWD/../dist/dist-apps

@@ -55,7 +55,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>copyright 2018 littledogbiguniverse - all rights reserved</string>
+          <string>copyright 2020 code0x378 - all rights reserved</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -68,7 +68,7 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>&lt;a href=&quot;http://www.littledogbiguniverse.com/&quot;&gt;www.littledogbiguniverse.com&lt;/a&gt;</string>
+          <string>&lt;a href=&quot;http://www.code0x378.com/&quot;&gt;www.code0x378.com&lt;/a&gt;</string>
          </property>
          <property name="textFormat">
           <enum>Qt::RichText</enum>

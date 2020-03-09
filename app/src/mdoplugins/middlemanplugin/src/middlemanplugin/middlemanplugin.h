@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 JeffSmithDev
+* Copyright (C) 2016-2020 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ class Resource;
 class MiddlemanPlugin : public QObject, public IPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "com.JeffSmithDev.MiddlemanPlugin")
+    Q_PLUGIN_METADATA(IID "com.code0x378.MiddlemanPlugin")
     Q_INTERFACES(IPlugin)
 
 public:

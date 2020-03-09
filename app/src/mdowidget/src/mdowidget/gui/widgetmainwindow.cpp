@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 JeffSmithDev
+* Copyright (C) 2016-2020 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -77,7 +77,7 @@ WidgetMainWindow::WidgetMainWindow(QWidget *parent) :
     displayTags();
     displayCategories();
 
-    ui->lineEditAuthor->setText("JeffSmithDev");
+    ui->lineEditAuthor->setText("code0x378");
     ui->lineEditDate->setText(QDate::currentDate().toString("yyyy-MM-dd"));
 
 
@@ -195,7 +195,7 @@ void WidgetMainWindow::addMainMenu()
 
     viewJeffSmithDevWebsiteAction = new QAction(
         QApplication::translate("AppMainWindow",
-                                "visit JeffSmithDev.com", 0), this);
+                                "visit code0x378.com", 0), this);
     viewJeffSmithDevWebsiteAction->setObjectName("viewJeffSmithDevWebsiteAction");
     connect(viewJeffSmithDevWebsiteAction, SIGNAL(triggered()), this,
             SLOT(openWebBrowser()));
@@ -253,7 +253,7 @@ void WidgetMainWindow::openWebBrowser()
     QString url = "http://www.google.com";
 
     if (name == "viewJeffSmithDevWebsiteAction") {
-        url = "http://www.JeffSmithDev.com";
+        url = "http://www.code0x378.com";
     } else {
         url = "http://www.google.com";
     }
@@ -392,7 +392,7 @@ void WidgetMainWindow::handleSave()
 
 void WidgetMainWindow::handleReset()
 {
-    ui->lineEditAuthor->setText("JeffSmithDev");
+    ui->lineEditAuthor->setText("code0x378");
     ui->lineEditDate->setText(QDate::currentDate().toString("yyyy-MM-dd"));
     ui->lineEditTitle->setText("");
     ui->lineEditWebsite->setText("");
