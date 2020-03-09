@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 JeffSmithDev
+* Copyright (C) 2016-2020 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -50,8 +50,8 @@ int main(int argc, char *argv[])
     /********************************************************
      * Application initialization
      ********************************************************/
-    MdoApplication::setOrganizationName("JeffSmithDev");
-    MdoApplication::setOrganizationDomain("JeffSmithDev.com");
+    MdoApplication::setOrganizationName("code0x378");
+    MdoApplication::setOrganizationDomain("code0x378.com");
     MdoApplication::setApplicationName("MarkdownOrganizer");
     MdoApplication::setApplicationVersion("1.0.0");
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
      * Command Line Options
      ********************************************************/
     QCommandLineParser parser;
-    parser.setApplicationDescription("MarkdownOrganizer: Distributed Information Management by JeffSmithDev");
+    parser.setApplicationDescription("MarkdownOrganizer: Distributed Information Management by code0x378");
     parser.addHelpOption();
     parser.addVersionOption();
     QCommandLineOption setLoggingLevelOption(QStringList() << "l" << "level",
@@ -165,12 +165,30 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+//    QDir directory(*APP->getConfigDirectory() + "/data/projects");
+//    QStringList dataFiles = directory.entryList(QStringList() << "*.ini", QDir::Files);
+//    Project  *project;
+//    foreach(QString filename, dataFiles) {
+//        QSettings *settings = new QSettings( *APP->getConfigDirectory() + "/data/projects/" + filename, QSettings::IniFormat);
     QSqlQuery query;
     query.exec("SELECT name, description, workingDirectory, postSaveCommand, tags, categories, projectType, isDefault, plugins, emailTo, emailFrom from projects order by name asc");
 
     Project  *project;
     while (query.next()) {
         project = new Project();
+//        project->setFileName(filename);
+//        project->setName(settings->value("title", "").toString());
+//        project->setType(ProjectType::Blog);
+//        project->setDescription(settings->value("description", "").toString());
+//        project->setWorkingDirectory(settings->value("workingDirectory", "").toString());
+//        project->setPostSaveCommmand(settings->value("postSaveCommand", "").toString());
+//        project->setTags(settings->value("tags", "").toString());
+//        project->setCategories(settings->value("categories", "").toString());
+//        project->setType(ProjectType::Notes);
+//        project->setIsDefault(settings->value("isDefault", true).toBool());
+//        project->setPlugins(settings->value("plugins", "").toString());
+//        project->setEmailTo(settings->value("emailTo", "").toString());
+//        project->setEmailFrom(settings->value("emailFrom", "").toString());
         project->setName(query.value(0).toString());
         project->setType(ProjectType::Blog);
         project->setDescription(query.value(1).toString());

@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2018 JeffSmithDev
+* Copyright (C) 2016-2020 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -68,6 +68,12 @@ public:
     QString getEmailFrom() const;
     void setEmailFrom(const QString &value);
 
+    QString getStarred() const;
+    void setStarred(const QString &value);
+
+    QString getFileName() const;
+    void setFileName(const QString &value);
+
 private:
 
     QString name;
@@ -82,6 +88,9 @@ private:
     QString plugins;
     QString emailTo;
     QString emailFrom;
+    QString starred;
+    QString fileName;
+
 };
 
 #endif // PROJECT_H
