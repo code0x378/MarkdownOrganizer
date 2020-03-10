@@ -326,37 +326,47 @@
         <translation>General</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="155"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="150"/>
         <source>tags</source>
         <translation>Tags</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="183"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="162"/>
+        <source>thumbnail</source>
+        <translation>Thumbnail</translation>
+    </message>
+    <message>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="179"/>
+        <source>images</source>
+        <translation>Images</translation>
+    </message>
+    <message>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="197"/>
         <source>advanced</source>
         <translation>Advanced</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="192"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="206"/>
         <source>draft</source>
         <translation>Draft</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="430"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="444"/>
         <source>UL</source>
         <translation>UL</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="450"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="464"/>
         <source>LK</source>
         <translation>LK</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="470"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="484"/>
         <source>CD</source>
         <translation>CD</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="490"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="504"/>
         <source>BQ</source>
         <translation>BQ</translation>
     </message>
@@ -373,12 +383,12 @@
         <translation type="vanished">Blockquote</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="619"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="633"/>
         <source>send email</source>
         <translation>Send email</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="247"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="261"/>
         <source>tableOfContents</source>
         <translation>Table of Contents</translation>
     </message>
@@ -387,32 +397,32 @@
         <translation type="vanished">Reset</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="638"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="652"/>
         <source>save</source>
         <translation>Save</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="141"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="172"/>
         <source>title</source>
         <translation>Title</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="121"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="133"/>
         <source>date</source>
         <translation>Date</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="131"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="143"/>
         <source>author</source>
         <translation>Author</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="148"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="186"/>
         <source>website</source>
         <translation>Website</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="167"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="118"/>
         <source>categories</source>
         <translation>Categories</translation>
     </message>
@@ -481,32 +491,32 @@
         <translation type="vanished">Java</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="301"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="315"/>
         <source>B</source>
         <translation>B</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="329"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="343"/>
         <source>I</source>
         <translation>I</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="356"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="370"/>
         <source>H1</source>
         <translation>H1</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="383"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="397"/>
         <source>H2</source>
         <translation>H2</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="410"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="424"/>
         <source>H3</source>
         <translation>H3</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="241"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="255"/>
         <source>editor</source>
         <translation>Editor</translation>
     </message>
@@ -515,7 +525,7 @@
         <translation type="vanished">Audit</translation>
     </message>
     <message>
-        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="599"/>
+        <location filename="../../../../mdoapp/src/mdoapp/gui/tools/editortoolwidget.ui" line="613"/>
         <source>add</source>
         <translation>Add</translation>
     </message>
@@ -876,6 +886,19 @@
     </message>
 </context>
 <context>
+    <name>ProjectTableModel</name>
+    <message>
+        <location filename="../../../src/mdocore/gui/dialogs/projecttablemodel.cpp" line="61"/>
+        <source>Name</source>
+        <translation type="unfinished">Name</translation>
+    </message>
+    <message>
+        <location filename="../../../src/mdocore/gui/dialogs/projecttablemodel.cpp" line="64"/>
+        <source>Address</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ProjectWidget</name>
     <message>
         <location filename="../../../../mdoapp/src/mdoapp/gui/widgets/projectwidget.ui" line="14"/>
@@ -941,6 +964,24 @@
     <message>
         <source>Color Scheme</source>
         <translation type="vanished">Color Scheme</translation>
+    </message>
+</context>
+<context>
+    <name>StaticaPlugin</name>
+    <message>
+        <location filename="../../../../mdoplugins/staticaplugin/src/staticaplugin/staticaplugin.cpp" line="137"/>
+        <source>Edit and manage statica text files</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../../../mdoplugins/staticaplugin/src/staticaplugin/staticaplugin.cpp" line="141"/>
+        <source>Copyright</source>
+        <translation type="unfinished">Copyright</translation>
+    </message>
+    <message>
+        <location filename="../../../../mdoplugins/staticaplugin/src/staticaplugin/staticaplugin.cpp" line="145"/>
+        <source>See the MarkdownOrganizer Plugin License</source>
+        <translation type="unfinished">See the MarkdownOrganizer Plugin License</translation>
     </message>
 </context>
 <context>

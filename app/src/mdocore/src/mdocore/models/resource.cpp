@@ -123,3 +123,23 @@ void Resource::setUuid(const QString &value)
     uuid = value;
 }
 
+QString Resource::getThumbnail() const
+{
+    return thumbnail;
+}
+
+void Resource::setThumbnail(const QString &value)
+{
+    thumbnail = value;
+}
+
+QString Resource::getImages() const
+{
+    return images;
+}
+
+void Resource::setImages(const QString &value)
+{
+    images = value;
+}
+

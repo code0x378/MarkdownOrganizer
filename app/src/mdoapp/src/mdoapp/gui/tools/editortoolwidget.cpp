@@ -139,7 +139,7 @@ void EditorToolWidget::projectChanged(const QString projectName)
 {
     displayTags();
     displayCategories();
-    ui->lineEditWebsite->setVisible(false);
+//    ui->lineEditWebsite->setVisible(false);
     ui->tocPlainTextEdit->setVisible(false);
     ui->tocLabel->setVisible(false);
     ui->editTabWidget->setVisible(true);
@@ -147,7 +147,7 @@ void EditorToolWidget::projectChanged(const QString projectName)
     ProjectType p = APP->getActiveProject()->getType();
     switch (p) {
     case ProjectType::Link:
-        ui->lineEditWebsite->setVisible(true);
+//        ui->lineEditWebsite->setVisible(true);
         ui->editTabWidget->setVisible(false);
         break;
     case ProjectType::Help:
@@ -306,6 +306,8 @@ void EditorToolWidget::handleSave()
     resource->setDate(ui->lineEditDate->text());
     resource->setAuthor(ui->lineEditAuthor->text());
     resource->setWebsite(ui->lineEditWebsite->text());
+    resource->setImages(ui->lineEditImages->text());
+    resource->setThumbnail(ui->lineEditThumbnail->text());
     resource->setContent(ui->mdPlainTextEdit->document()->toPlainText());
     resource->setFilePath(filePath);
     resource->setTags(tags.replace("&", ""));

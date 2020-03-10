@@ -112,6 +112,18 @@
                  <property name="spacing">
                   <number>6</number>
                  </property>
+                 <item row="0" column="2" rowspan="8">
+                  <widget class="QGroupBox" name="groupBoxCategories">
+                   <property name="title">
+                    <string>categories</string>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_6">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
+                   </layout>
+                  </widget>
+                 </item>
                  <item row="1" column="0">
                   <widget class="QLineEdit" name="lineEditDate">
                    <property name="text">
@@ -132,24 +144,7 @@
                    </property>
                   </widget>
                  </item>
-                 <item row="0" column="0" colspan="2">
-                  <widget class="QLineEdit" name="lineEditTitle">
-                   <property name="inputMask">
-                    <string/>
-                   </property>
-                   <property name="placeholderText">
-                    <string>title</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="2" column="0" colspan="2">
-                  <widget class="QLineEdit" name="lineEditWebsite">
-                   <property name="placeholderText">
-                    <string>website</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="5" column="0" rowspan="2" colspan="2">
+                 <item row="6" column="0" rowspan="2" colspan="2">
                   <widget class="QGroupBox" name="groupBoxTags">
                    <property name="title">
                     <string>tags</string>
@@ -161,16 +156,35 @@
                    </layout>
                   </widget>
                  </item>
-                 <item row="0" column="2" rowspan="7">
-                  <widget class="QGroupBox" name="groupBoxCategories">
-                   <property name="title">
-                    <string>categories</string>
+                 <item row="2" column="1">
+                  <widget class="QLineEdit" name="lineEditThumbnail">
+                   <property name="placeholderText">
+                    <string>thumbnail</string>
                    </property>
-                   <layout class="QGridLayout" name="gridLayout_6">
-                    <property name="spacing">
-                     <number>0</number>
-                    </property>
-                   </layout>
+                  </widget>
+                 </item>
+                 <item row="0" column="0" colspan="2">
+                  <widget class="QLineEdit" name="lineEditTitle">
+                   <property name="inputMask">
+                    <string/>
+                   </property>
+                   <property name="placeholderText">
+                    <string>title</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="3" column="0" colspan="2">
+                  <widget class="QLineEdit" name="lineEditImages">
+                   <property name="placeholderText">
+                    <string>images</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item row="2" column="0">
+                  <widget class="QLineEdit" name="lineEditWebsite">
+                   <property name="placeholderText">
+                    <string>website</string>
+                   </property>
                   </widget>
                  </item>
                 </layout>

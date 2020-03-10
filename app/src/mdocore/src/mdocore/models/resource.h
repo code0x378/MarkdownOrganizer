@@ -59,6 +59,12 @@ public:
     QString getUuid() const;
     void setUuid(const QString &value);
 
+    QString getThumbnail() const;
+    void setThumbnail(const QString &value);
+
+    QString getImages() const;
+    void setImages(const QString &value);
+
 protected:
     QString title = "";
     QString date = "";
@@ -68,6 +74,8 @@ protected:
     QString categories = "";
     QString website = "";
     QString filePath = "";
+    QString thumbnail = "";
+    QString images = "";
     bool draft = false;
     QString uuid = QUuid::createUuid().toString();
 };

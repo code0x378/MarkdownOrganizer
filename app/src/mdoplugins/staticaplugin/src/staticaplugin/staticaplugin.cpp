@@ -52,9 +52,12 @@ bool StaticaPlugin::save (const Project &project, const Resource &resource )
         model.insert("{{author}}", resource.getAuthor());
         model.insert("{{website}}", resource.getWebsite());
         model.insert("{{content}}", resource.getContent());
-        model.insert("{{tags}}", resource.getTags().replace("&", ""));
-        model.insert("{{categories}}", resource.getCategories().replace("&", ""));
+        model.insert("{{tags}}", resource.getTags().replace("&", "").replace("\"", ""));
+        model.insert("{{categories}}", resource.getCategories().replace("&", ""
+                                                                             "").replace("\"", ""));
         model.insert("{{draft}}", resource.isDraft() ? "true" : "false");
+        model.insert("{{images}}", resource.getImages());
+        model.insert("{{thumbnail}}", resource.getThumbnail());
 
         QString tpl =
             "--- \n"
@@ -67,6 +70,8 @@ bool StaticaPlugin::save (const Project &project, const Resource &resource )
             "tags:  {{tags}} \n"
             "categories:  {{categories}} \n"
             "draft: {{draft}} \n"
+            "images: {{images}} \n"
+            "thumbnail: {{thumbnail}} \n"
             "--- \n\n"
             "{{content}} \n";
 
