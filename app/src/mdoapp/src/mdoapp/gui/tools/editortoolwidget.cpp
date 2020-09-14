@@ -168,6 +168,8 @@ void EditorToolWidget::addSignalsAndSlots()
     VERIFY(connect(ui->mdPlainTextEdit, SIGNAL(textChanged()), this,
                    SLOT(updatePreview())));
 
+    VERIFY(connect(ui->dateToolButton, SIGNAL(released()), this,
+                   SLOT(insertDate())));
     VERIFY(connect(ui->boldToolButton, SIGNAL(released()), this,
                    SLOT(formatBold())));
     VERIFY(connect(ui->italicToolButton, SIGNAL(released()), this,
@@ -182,6 +184,11 @@ void EditorToolWidget::addSignalsAndSlots()
     VERIFY(connect(ui->ulToolButton, SIGNAL(released()), this, SLOT(formatUl())));
     VERIFY(connect(ui->blockquoteToolButton, SIGNAL(released()), this,
                    SLOT(formatBlockQuote())));
+}
+
+void EditorToolWidget::insertDate()
+{
+    ui->mdPlainTextEdit->textCursor().insertText(QString("**%1**").arg(QDate::currentDate().toString("M/d/yy")));
 }
 
 void EditorToolWidget::formatBold()
@@ -338,6 +345,8 @@ void EditorToolWidget::handleReset()
     ui->lineEditDate->setText(QDate::currentDate().toString("yyyy-MM-dd"));
     ui->lineEditTitle->setText("");
     ui->lineEditWebsite->setText("");
+    ui->lineEditImages->setText("");
+    ui->lineEditThumbnail->setText("");
     ui->mdPlainTextEdit->setPlainText("");
 
 

@@ -44,6 +44,7 @@ signals:
     void htmlUpdated(QString filePath);
 
 private slots:
+    void insertDate();
     void formatBold();
     void formatItalic();
     void formatH1();
