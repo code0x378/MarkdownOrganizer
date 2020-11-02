@@ -139,16 +139,16 @@ void EditorToolWidget::projectChanged(const QString projectName)
 {
     displayTags();
     displayCategories();
-//    ui->lineEditWebsite->setVisible(false);
     ui->tocPlainTextEdit->setVisible(false);
     ui->tocLabel->setVisible(false);
-    ui->editTabWidget->setVisible(true);
+//    ui->lineEditWebsite->setVisible(false);
+//    ui->editTabWidget->setVisible(true);
 
     ProjectType p = APP->getActiveProject()->getType();
     switch (p) {
     case ProjectType::Link:
 //        ui->lineEditWebsite->setVisible(true);
-        ui->editTabWidget->setVisible(false);
+//        ui->editTabWidget->setVisible(false);
         break;
     case ProjectType::Help:
         ui->tocLabel->setVisible(true);
