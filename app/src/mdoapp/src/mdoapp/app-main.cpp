@@ -165,30 +165,36 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-//    QDir directory(*APP->getConfigDirectory() + "/data/projects");
-//    QStringList dataFiles = directory.entryList(QStringList() << "*.ini", QDir::Files);
-//    Project  *project;
-//    foreach(QString filename, dataFiles) {
-//        QSettings *settings = new QSettings( *APP->getConfigDirectory() + "/data/projects/" + filename, QSettings::IniFormat);
+        QDir directory(qApp->applicationDirPath() + "/data/projects");
+////        QDir directory(*APP->getConfigDirectory() + "/data/projects");
+//        QStringList dataFiles = directory.entryList(QStringList() << "*.ini", QDir::Files);
+//        Project  *project;
+//        foreach(QString filename, dataFiles) {
+
+
+
+
     QSqlQuery query;
     query.exec("SELECT name, description, workingDirectory, postSaveCommand, tags, categories, projectType, isDefault, plugins, emailTo, emailFrom from projects order by name asc");
 
     Project  *project;
     while (query.next()) {
         project = new Project();
-//        project->setFileName(filename);
-//        project->setName(settings->value("title", "").toString());
-//        project->setType(ProjectType::Blog);
-//        project->setDescription(settings->value("description", "").toString());
-//        project->setWorkingDirectory(settings->value("workingDirectory", "").toString());
-//        project->setPostSaveCommmand(settings->value("postSaveCommand", "").toString());
-//        project->setTags(settings->value("tags", "").toString());
-//        project->setCategories(settings->value("categories", "").toString());
-//        project->setType(ProjectType::Notes);
-//        project->setIsDefault(settings->value("isDefault", true).toBool());
-//        project->setPlugins(settings->value("plugins", "").toString());
-//        project->setEmailTo(settings->value("emailTo", "").toString());
-//        project->setEmailFrom(settings->value("emailFrom", "").toString());
+//        settings->beginGroup("project");
+//                project->setFileName(filename);
+//                project->setName(settings->value("title", "").toString());
+//                project->setType(ProjectType::Blog);
+//                project->setDescription(settings->value("description", "").toString());
+//                project->setWorkingDirectory(settings->value("workingDirectory", "").toString());
+//                project->setPostSaveCommmand(settings->value("postSaveCommand", "").toString());
+//                project->setTags(settings->value("tags", "").toString());
+//                project->setCategories(settings->value("categories", "").toString());
+//                project->setType(ProjectType::Notes);
+//                project->setIsDefault(settings->value("isDefault", true).toBool());
+//                project->setPlugins(settings->value("plugins", "").toString());
+//                project->setEmailTo(settings->value("emailTo", "").toString());
+//                project->setEmailFrom(settings->value("emailFrom", "").toString());
+//                settings->endGroup();
         project->setName(query.value(0).toString());
         project->setType(ProjectType::Blog);
         project->setDescription(query.value(1).toString());
@@ -202,10 +208,25 @@ int main(int argc, char *argv[])
         project->setEmailTo(query.value(9).toString());
         project->setEmailFrom(query.value(10).toString());
         app.getProjects()->insert(project->getName(), project);
+
+        QString s = qApp->applicationDirPath() + "/data/projects/" + project->getName() + ".ini";
+        QSettings *settings = new QSettings( s, QSettings::IniFormat);
+
+        settings->setValue("title", project->getName());
+        settings->setValue("description", project->getName());
+        settings->setValue("workingDirectory", project->getWorkingDirectory());
+        settings->setValue("postSaveCommand", project->getPostSaveCommmand());
+        settings->setValue("tags", project->getTags());
+        settings->setValue("categories", project->getCategories());
+        settings->setValue("isDefault", project->getName());
+        settings->setValue("plugins", project->getPlugins());
+        settings->setValue("emailTo", project->getEmailTo());
+        settings->setValue("emailFrom", project->getEmailFrom());
+
         if (project->getIsDefault() == 1) {
             app.setActiveProject(project);
             app.getActiveProject()->setCurrentDirectory(
-                app.getActiveProject()->getWorkingDirectory());
+                        app.getActiveProject()->getWorkingDirectory());
         }
     }
 
