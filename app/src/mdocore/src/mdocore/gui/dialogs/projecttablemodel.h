@@ -5,28 +5,9 @@
 #include <QAbstractTableModel>
 #include <QList>
 
+#include <mdocore/models/project.h>
+
 //! [0]
-
-struct Contact
-{
-    QString name;
-    QString address;
-
-    bool operator==(const Contact &other) const
-    {
-        return name == other.name && address == other.address;
-    }
-};
-
-inline QDataStream &operator<<(QDataStream &stream, const Contact &contact)
-{
-    return stream << contact.name << contact.address;
-}
-
-inline QDataStream &operator>>(QDataStream &stream, Contact &contact)
-{
-    return stream >> contact.name >> contact.address;
-}
 
 class ProjectTableModel : public QAbstractTableModel
 {
@@ -34,7 +15,7 @@ class ProjectTableModel : public QAbstractTableModel
 
 public:
     ProjectTableModel(QObject *parent = 0);
-    ProjectTableModel(QList<Contact> contacts, QObject *parent = 0);
+    ProjectTableModel(QList<Project *> projects, QObject *parent = 0);
 
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
@@ -44,10 +25,10 @@ public:
     bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
     bool insertRows(int position, int rows, const QModelIndex &index = QModelIndex()) override;
     bool removeRows(int position, int rows, const QModelIndex &index = QModelIndex()) override;
-    QList<Contact> getContacts() const;
+    QList<Project *> getProjects() const;
 
 private:
-    QList<Contact> contacts;
+    QList<Project *> projects;
 };
 //! [0]
 

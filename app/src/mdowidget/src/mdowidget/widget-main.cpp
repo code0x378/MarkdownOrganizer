@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2020 code0x378
+* Copyright (C) 2016-2021 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -163,13 +163,13 @@ int main(int argc, char *argv[])
     while (query.next()) {
         Project  project;
         project.setName(query.value(0).toString());
-        project.setType(ProjectType::Blog);
+        project.setType(2);
         project.setDescription(query.value(1).toString());
         project.setWorkingDirectory(query.value(2).toString());
         project.setPostSaveCommmand(query.value(3).toString());
         project.setTags(query.value(4).toString());
         project.setCategories(query.value(5).toString());
-        project.setType((ProjectType) query.value(6).toInt());
+        project.setType(query.value(6).toInt());
         project.setIsDefault(query.value(7).toBool());
         app.getProjects()->insert(project.getName(), &project);
         if (project.getIsDefault() == 1) {

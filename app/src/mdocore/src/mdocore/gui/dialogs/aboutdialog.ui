@@ -55,7 +55,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>copyright 2020 code0x378 - all rights reserved</string>
+          <string>copyright 2021 code0x378 - all rights reserved</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -68,13 +68,16 @@
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>&lt;a href=&quot;http://www.code0x378.com/&quot;&gt;www.code0x378.com&lt;/a&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;http://www.code0x378.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#2980b9;&quot;&gt;www.code0x378.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="textFormat">
-          <enum>Qt::RichText</enum>
+          <enum>Qt::AutoText</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
+         </property>
+         <property name="openExternalLinks">
+          <bool>true</bool>
          </property>
          <property name="textInteractionFlags">
           <set>Qt::TextBrowserInteraction</set>
@@ -114,7 +117,7 @@
             <x>0</x>
             <y>0</y>
             <width>546</width>
-            <height>378</height>
+            <height>387</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout_3">

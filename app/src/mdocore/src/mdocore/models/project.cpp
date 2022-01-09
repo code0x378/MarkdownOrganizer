@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2020 code0x378
+* Copyright (C) 2016-2021 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -17,10 +17,19 @@
 */
 
 #include "project.h"
+#include "mdocore/mdoapplication.h"
+
+#include <QFile>
+#include <QSettings>
 
 Project::Project()
 {
 
+
+}
+
+Project::Project(const Project &other)
+{
 
 }
 
@@ -64,12 +73,12 @@ void Project::setPostSaveCommmand(const QString &value)
     postSaveCommmand = value;
 }
 
-ProjectType Project::getType() const
+int Project::getType() const
 {
     return type;
 }
 
-void Project::setType(const ProjectType &value)
+void Project::setType(const int value)
 {
     type = value;
 }
@@ -162,4 +171,30 @@ QString Project::getFileName() const
 void Project::setFileName(const QString &value)
 {
     fileName = value;
+}
+
+void Project::saveProject(Project *project)
+{
+    QString path = qApp->applicationDirPath() + "/data/projects/" + project->getName() + ".ini";
+    QSettings *settings = new QSettings( path, QSettings::IniFormat);
+
+    settings->beginGroup("Project");
+    settings->setValue("title", project->getName());
+    settings->setValue("description", project->getDescription());
+    settings->setValue("workingDirectory", project->getWorkingDirectory());
+    settings->setValue("postSaveCommand", project->getPostSaveCommmand());
+    settings->setValue("tags", project->getTags());
+    settings->setValue("categories", project->getCategories());
+    settings->setValue("isDefault", project->getIsDefault());
+    settings->setValue("plugins", project->getPlugins());
+    settings->setValue("emailTo", project->getEmailTo());
+    settings->setValue("emailFrom", project->getEmailFrom());
+    settings->endGroup();
+}
+
+void Project::deleteProject(Project *project)
+{
+    QString path = qApp->applicationDirPath() + "/data/projects/" + project->getName() + ".ini";
+    QFile file (path);
+    file.remove();
 }

@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2020 code0x378
+* Copyright (C) 2016-2021 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -144,13 +144,13 @@ void EditorToolWidget::projectChanged(const QString projectName)
 //    ui->lineEditWebsite->setVisible(false);
 //    ui->editTabWidget->setVisible(true);
 
-    ProjectType p = APP->getActiveProject()->getType();
+    int p = APP->getActiveProject()->getType();
     switch (p) {
-    case ProjectType::Link:
+    case 3:
 //        ui->lineEditWebsite->setVisible(true);
 //        ui->editTabWidget->setVisible(false);
         break;
-    case ProjectType::Help:
+    case 4:
         ui->tocLabel->setVisible(true);
         ui->tocPlainTextEdit->setVisible(true);
         break;

@@ -19,8 +19,8 @@
     </message>
     <message>
         <location filename="../../../src/mdocore/gui/dialogs/aboutdialog.ui" line="58"/>
-        <source>copyright 2020 code0x378 - all rights reserved</source>
-        <translation>Copyright 2020 code0x378 - All rights reserved</translation>
+        <source>copyright 2021 code0x378 - all rights reserved</source>
+        <translation>Copyright 2021 code0x378 - All rights reserved</translation>
     </message>
     <message>
         <location filename="../../../src/mdocore/gui/dialogs/aboutdialog.ui" line="71"/>

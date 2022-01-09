@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2020 code0x378
+* Copyright (C) 2016-2021 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -47,6 +47,7 @@
 
 int main(int argc, char *argv[])
 {
+
     /********************************************************
      * Application initialization
      ********************************************************/
@@ -76,6 +77,7 @@ int main(int argc, char *argv[])
     /********************************************************
      * Setup Logging
      ********************************************************/
+
     LOG_MANAGER_INITIALIZE;
     QString loggingLevel = parser.value(setLoggingLevelOption);
     if (!loggingLevel.isNull() && !loggingLevel.isEmpty()) {
@@ -165,69 +167,44 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-        QDir directory(qApp->applicationDirPath() + "/data/projects");
-////        QDir directory(*APP->getConfigDirectory() + "/data/projects");
-//        QStringList dataFiles = directory.entryList(QStringList() << "*.ini", QDir::Files);
-//        Project  *project;
-//        foreach(QString filename, dataFiles) {
+    QDir directory(qApp->applicationDirPath() + "/data/projects");
+    // QDir directory(*APP->getConfigDirectory() + "/data/projects");
+    QStringList dataFiles = directory.entryList(QStringList() << "*.ini", QDir::Files);
+
+    foreach(QString filename, dataFiles) {
+        QString path = qApp->applicationDirPath() + "/data/projects/" + filename;
+        QSettings *settings = new QSettings(path, QSettings::IniFormat);
+
+        Project  *project = new Project();
+        settings->beginGroup("Project");
+
+        const QStringList childKeys = settings->childKeys();
+        foreach (const QString &childKey, childKeys)
+           LOG_INFO(settings->value(childKey).toString());
 
 
+        project->setFileName(filename);
+        project->setName(settings->value("title", "").toString());
+        project->setType(settings->value("type", false).toInt());
+        project->setDescription(settings->value("description", "").toString());
+        project->setWorkingDirectory(settings->value("workingDirectory", "").toString());
+        project->setPostSaveCommmand(settings->value("postSaveCommand", "").toString());
+        project->setTags(settings->value("tags", "").toString());
+        project->setCategories(settings->value("categories", "").toString());
+        project->setIsDefault(settings->value("isDefault", false).toBool());
+        project->setPlugins(settings->value("plugins", "").toString());
+        project->setEmailTo(settings->value("emailTo", "").toString());
+        project->setEmailFrom(settings->value("emailFrom", "").toString());
+        settings->endGroup();
 
-
-    QSqlQuery query;
-    query.exec("SELECT name, description, workingDirectory, postSaveCommand, tags, categories, projectType, isDefault, plugins, emailTo, emailFrom from projects order by name asc");
-
-    Project  *project;
-    while (query.next()) {
-        project = new Project();
-//        settings->beginGroup("project");
-//                project->setFileName(filename);
-//                project->setName(settings->value("title", "").toString());
-//                project->setType(ProjectType::Blog);
-//                project->setDescription(settings->value("description", "").toString());
-//                project->setWorkingDirectory(settings->value("workingDirectory", "").toString());
-//                project->setPostSaveCommmand(settings->value("postSaveCommand", "").toString());
-//                project->setTags(settings->value("tags", "").toString());
-//                project->setCategories(settings->value("categories", "").toString());
-//                project->setType(ProjectType::Notes);
-//                project->setIsDefault(settings->value("isDefault", true).toBool());
-//                project->setPlugins(settings->value("plugins", "").toString());
-//                project->setEmailTo(settings->value("emailTo", "").toString());
-//                project->setEmailFrom(settings->value("emailFrom", "").toString());
-//                settings->endGroup();
-        project->setName(query.value(0).toString());
-        project->setType(ProjectType::Blog);
-        project->setDescription(query.value(1).toString());
-        project->setWorkingDirectory(query.value(2).toString());
-        project->setPostSaveCommmand(query.value(3).toString());
-        project->setTags(query.value(4).toString());
-        project->setCategories(query.value(5).toString());
-        project->setType((ProjectType) query.value(6).toInt());
-        project->setIsDefault(query.value(7).toBool());
-        project->setPlugins(query.value(8).toString());
-        project->setEmailTo(query.value(9).toString());
-        project->setEmailFrom(query.value(10).toString());
-        app.getProjects()->insert(project->getName(), project);
-
-        QString s = qApp->applicationDirPath() + "/data/projects/" + project->getName() + ".ini";
-        QSettings *settings = new QSettings( s, QSettings::IniFormat);
-
-        settings->setValue("title", project->getName());
-        settings->setValue("description", project->getName());
-        settings->setValue("workingDirectory", project->getWorkingDirectory());
-        settings->setValue("postSaveCommand", project->getPostSaveCommmand());
-        settings->setValue("tags", project->getTags());
-        settings->setValue("categories", project->getCategories());
-        settings->setValue("isDefault", project->getName());
-        settings->setValue("plugins", project->getPlugins());
-        settings->setValue("emailTo", project->getEmailTo());
-        settings->setValue("emailFrom", project->getEmailFrom());
 
         if (project->getIsDefault() == 1) {
             app.setActiveProject(project);
             app.getActiveProject()->setCurrentDirectory(
                         app.getActiveProject()->getWorkingDirectory());
         }
+
+        app.getProjects()->insert(project->getName(), project);
     }
 
     /********************************************************

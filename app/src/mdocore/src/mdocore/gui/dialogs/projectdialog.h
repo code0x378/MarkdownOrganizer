@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2020 code0x378
+* Copyright (C) 2016-2021 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -18,6 +18,8 @@
 
 #ifndef PROJECTDIALOG_H
 #define PROJECTDIALOG_H
+
+#include "projecttablemodel.h"
 
 #include <QDialog>
 #include <QSqlRecord>
@@ -41,12 +43,16 @@ private slots:
     void deleteProject();
     void newProject();
     void updateSelectedTabs(const QModelIndex &index);
+    void editSelectedProject(const QModelIndex &index);
     void onToggled();
 private:
     Ui::ProjectDialog *ui;
-    QSqlRelationalTableModel *model;
+    ProjectTableModel *model;
     void loadProjects();
     void displayPlugins();
+    QString getSelectedPlugins();
+
+    Project *selectedProject = new Project();
 };
 
 #endif // PROJECTDIALOG_H

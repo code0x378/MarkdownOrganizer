@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2020 code0x378
+* Copyright (C) 2016-2021 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -31,7 +31,7 @@
 
 #include <mdocore/models/project.h>
 #include <mdocore/util/qtutils.h>
-#include <mdocore/logmanager.h>
+#include <mdocore/logmanager.h>\
 #include <mdocore/mdoapplication.h>
 #include <mdocore/pluginmanager.h>
 #include <mdocore/mdoapplication.h>
@@ -43,6 +43,14 @@ ProjectDialog::ProjectDialog(QWidget *parent) :
     ui->setupUi(this);
     loadProjects();
     displayPlugins();
+
+    QList<QString> types;
+    types.append("Generic");
+    types.append("Blog");
+    types.append("Bookmarks");
+    types.append("Help System");
+    types.append("Notes");
+    ui->projectComboBox->addItems(types);
 
     VERIFY(connect(ui->savePushButton, SIGNAL(released()), this,
                    SLOT(addProject())));
@@ -85,143 +93,118 @@ void ProjectDialog::displayPlugins()
     }
 }
 
-
-void ProjectDialog::addProject()
+QString ProjectDialog::getSelectedPlugins()
 {
     QString plugins;
     QList<QCheckBox *> checkboxes = ui->pluginGroupBox->findChildren<QCheckBox *>();
     for (QCheckBox *chk : checkboxes)
-        plugins += chk->text() + ", ";
+        if(chk->isChecked())
+            plugins += chk->text() + ", ";
 
-    QSqlRecord rec;
-    rec.append(QSqlField("name", QVariant::String));
-    rec.append(QSqlField("description", QVariant::String));
-    rec.append(QSqlField("workingDirectory", QVariant::String));
-    rec.append(QSqlField("postSaveCommand", QVariant::String));
-    rec.append(QSqlField("tags", QVariant::String));
-    rec.append(QSqlField("categories", QVariant::String));
-    rec.append(QSqlField("projectType", QVariant::Int));
-    rec.append(QSqlField("isDefault", QVariant::Bool));
-    rec.append(QSqlField("plugins", QVariant::String));
-    rec.setValue("name", ui->nameLineEdit->text());
-    rec.setValue("description", ui->descriptionLineEdit->text());
-    rec.setValue("workingDirectory", ui->workingDirLineEdit->text());
-    rec.setValue("postSaveCommand", ui->posttSaveCommmandLineEdit->text());
-    rec.setValue("tags", ui->tagsLineEdit->text());
-    rec.setValue("catregories", ui->categoriesLineEdit->text());
-    rec.setValue("projectType", ui->projectComboBox->currentIndex() + 1);
-    rec.setValue("isDefault", ui->isDefaultCheckBox->checkState());
-    rec.setValue("plugins", plugins);
-    model->insertRecord(-1, rec);
-    if (model->lastError().text() != "")
-        LOG_INFO(model->lastError().text());
+    return plugins;
+}
+
+
+void ProjectDialog::addProject()
+{
+    selectedProject = new Project();
+    selectedProject->setName(ui->nameLineEdit->text());
+    selectedProject->setDescription(ui->descriptionLineEdit->text());
+    selectedProject->setTags(ui->tagsLineEdit->text());
+    selectedProject->setWorkingDirectory(ui->workingDirLineEdit->text());
+    selectedProject->setPostSaveCommmand(ui->posttSaveCommmandLineEdit->text());
+    selectedProject->setEmailTo(ui->toLineEdit->text());
+    selectedProject->setEmailFrom(ui->fromLineEdit->text());
+    selectedProject->setCategories(ui->categoriesLineEdit->text());
+    selectedProject->setIsDefault(ui->isDefaultCheckBox->checkState());
+    selectedProject->setType(ui->projectComboBox->currentIndex());
+    selectedProject->setPlugins(getSelectedPlugins());
+
+    Project::saveProject(selectedProject);
 }
 
 void ProjectDialog::deleteProject()
 {
-    model->removeRow(ui->projectTableView->currentIndex().row());
-    model->select();
+    int idx = ui->projectTableView->currentIndex().row();
+    selectedProject = model->getProjects().at(idx);
+    Project::deleteProject(selectedProject);
+    model->removeRow(idx);
 }
 
 void ProjectDialog::onToggled()
 {
-    QString plugins;
-    QList<QCheckBox *> checkboxes = ui->pluginGroupBox->findChildren<QCheckBox *>();
-    for (QCheckBox *chk : checkboxes)
-        plugins += chk->text() + ", ";
+    model->getProjects().at(ui->projectTableView->currentIndex().row())->setPlugins(getSelectedPlugins());
 
-    model-> record(ui->projectTableView->currentIndex().row()).setValue("plugins",
-                                                                        plugins);
-    model->submitAll();
 }
 
 void ProjectDialog::newProject()
 {
-    // todo: fix this hack and clear selected properly
-    model->select();
     ui->nameLineEdit->setText("");
     ui->descriptionLineEdit->setText("");
     ui->workingDirLineEdit->setText("");
     ui->posttSaveCommmandLineEdit->setText("");
     ui->toLineEdit->setText("");
     ui->fromLineEdit->setText("");
+    ui->tagsLineEdit->setText("");
+    ui->categoriesLineEdit->setText("");
+    ui->projectComboBox->setCurrentText("Blog");
+    ui->isDefaultCheckBox->setCheckState(Qt::CheckState::Checked);
 }
 
 void ProjectDialog::loadProjects()
 {
-    model = new QSqlRelationalTableModel(ui->projectTableView);
-    model->setEditStrategy(QSqlTableModel::OnFieldChange);
-    model->setTable("projects");
 
-    int projectTypeIdx = model->fieldIndex("projectType");
-
-    model->setRelation(projectTypeIdx, QSqlRelation("project_types", "id", "name"));
-    model->setHeaderData(model->fieldIndex("name"), Qt::Horizontal, tr("name"));
-    model->setHeaderData(model->fieldIndex("workingDirectory"), Qt::Horizontal,
-                         tr("workingDirectory"));
-    model->setHeaderData(model->fieldIndex("postSaveCommand"), Qt::Horizontal,
-                         tr("postSaveCommand"));
-    model->setHeaderData(model->fieldIndex("tags"), Qt::Horizontal,
-                         tr("tags"));
-    model->setHeaderData(model->fieldIndex("categories"), Qt::Horizontal,
-                         tr("categories"));
-    model->setHeaderData(projectTypeIdx, Qt::Horizontal, tr("ProjectType"));
-
-    if (!model->select()) {
-        QMessageBox::critical(this, "Unable to load projects",
-                              "Unable to load projects");
-        return;
-    }
+    model = new ProjectTableModel(APP->getProjects()->values(), ui->projectTableView);
 
     ui->projectTableView->setModel(model);
-    ui->projectTableView->setColumnHidden(model->fieldIndex("id"), true);
-    ui->projectTableView->setColumnHidden(model->fieldIndex("workingDirectory"),
-                                          true);
-    ui->projectTableView->setColumnHidden(model->fieldIndex("postSaveCommand"),
-                                          true);
-    ui->projectTableView->setColumnHidden(model->fieldIndex("tags"),
-                                          true);
-    ui->projectTableView->setColumnHidden(model->fieldIndex("categories"),
-                                          true);
-    ui->projectTableView->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->projectTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
-//    ui->projectTableView->horizontalHeader()->setSectionResizeMode(
-//        QHeaderView::Stretch);
-
-    ui->projectComboBox->setModel(model->relationModel(projectTypeIdx));
-    ui->projectComboBox->setModelColumn(model->relationModel(
-                                            projectTypeIdx)->fieldIndex("name"));
-
-    QDataWidgetMapper *mapper = new QDataWidgetMapper(this);
-    mapper->setModel(model);
-    mapper->addMapping(ui->nameLineEdit, model->fieldIndex("name"));
-    mapper->addMapping(ui->descriptionLineEdit, model->fieldIndex("description"));
-    mapper->addMapping(ui->workingDirLineEdit,
-                       model->fieldIndex("workingDirectory"));
-    mapper->addMapping(ui->posttSaveCommmandLineEdit,
-                       model->fieldIndex("postSaveCommand"));
-    mapper->addMapping(ui->tagsLineEdit,
-                       model->fieldIndex("tags"));
-    mapper->addMapping(ui->categoriesLineEdit,
-                       model->fieldIndex("categories"));
-    mapper->addMapping(ui->projectComboBox, projectTypeIdx);
-    mapper->addMapping(ui->isDefaultCheckBox, model->fieldIndex("isDefault"));
-    mapper->addMapping(ui->toLineEdit, model->fieldIndex("emailTo"));
-    mapper->addMapping(ui->fromLineEdit, model->fieldIndex("emailFrom"));
+    ui->projectTableView->setModel(model);
+    ui->projectTableView->horizontalHeader()->setStretchLastSection(true);
+    ui->projectTableView->verticalHeader()->hide();
+    ui->projectTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->projectTableView->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->projectTableView->setSortingEnabled(true);
 
     connect(ui->projectTableView->selectionModel(),
             SIGNAL(currentRowChanged(QModelIndex, QModelIndex)),
-            mapper, SLOT(setCurrentModelIndex(QModelIndex)));
+            this, SLOT(editSelectedProject(QModelIndex)));
 
     connect(ui->projectTableView->selectionModel(),
             SIGNAL(currentRowChanged(QModelIndex, QModelIndex)),
             this, SLOT(updateSelectedTabs(QModelIndex)));
-    //    ui->projectTableView->setCurrentIndex(model->index(0, 0));
+}
+
+
+void ProjectDialog::editSelectedProject(const QModelIndex &index)
+{
+     auto projects = model->getProjects();
+
+         int i = ui->projectTableView->currentIndex().row();
+
+         if(i < 0) {
+             return;
+         }
+
+         selectedProject = projects.at(i);
+
+         ui->nameLineEdit->setText(selectedProject->getName());
+         ui->descriptionLineEdit->setText(selectedProject->getDescription());
+         ui->workingDirLineEdit->setText(selectedProject->getWorkingDirectory());
+         ui->posttSaveCommmandLineEdit->setText(selectedProject->getPostSaveCommmand());
+         ui->toLineEdit->setText(selectedProject->getEmailTo());
+         ui->fromLineEdit->setText(selectedProject->getEmailFrom());
+         ui->tagsLineEdit->setText(selectedProject->getTags());
+         ui->categoriesLineEdit->setText(selectedProject->getCategories());
+         ui->projectComboBox->setCurrentIndex(selectedProject->getType());
+         ui->isDefaultCheckBox->setCheckState((Qt::CheckState) selectedProject->getIsDefault());
+
+         updateSelectedTabs(ui->projectTableView->currentIndex());
+
 }
 
 void ProjectDialog::updateSelectedTabs(const QModelIndex &index)
 {
-    QString plugins = model-> record(index.row()).value("plugins").toString();
+    QString plugins = model->getProjects().at(ui->projectTableView->currentIndex().row())->getPlugins();
 
     QList<QCheckBox *> checkboxes = ui->pluginGroupBox->findChildren<QCheckBox *>();
 
@@ -236,5 +219,6 @@ void ProjectDialog::updateSelectedTabs(const QModelIndex &index)
         }
     }
 
-
 }
+
+

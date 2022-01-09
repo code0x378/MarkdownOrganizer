@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2020 code0x378
+* Copyright (C) 2016-2021 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 #include <QObject>
 #include "model.h"
 
-enum class ProjectType { Generic = 1, Blog = 2, Link = 3, Help = 4, Notes = 5 };
+enum class ProjectType { Generic = 0, Blog = 1, Link = 2, Help = 3, Notes = 4 };
 
 class Project : public Model
 {
@@ -31,6 +31,7 @@ class Project : public Model
 
 public:
     Project();
+    Project(const Project &other);
 
     QString getName() const;
     void setName(const QString &value);
@@ -44,8 +45,8 @@ public:
     QString getPostSaveCommmand() const;
     void setPostSaveCommmand(const QString &value);
 
-    ProjectType getType() const;
-    void setType(const ProjectType &value);
+    int getType() const;
+    void setType(int value);
 
     bool getIsDefault() const;
     void setIsDefault(bool value);
@@ -74,6 +75,9 @@ public:
     QString getFileName() const;
     void setFileName(const QString &value);
 
+    static void saveProject(Project *project);
+    static void deleteProject(Project *project);
+
 private:
 
     QString name;
@@ -83,7 +87,7 @@ private:
     bool isDefault;
     QString tags;
     QString categories;
-    ProjectType type = ProjectType::Blog;
+    int type = 2;
     QString currentDirectory;
     QString plugins;
     QString emailTo;

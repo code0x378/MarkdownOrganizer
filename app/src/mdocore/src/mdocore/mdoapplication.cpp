@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2020 code0x378
+* Copyright (C) 2016-2021 code0x378
 * 
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -63,7 +63,16 @@ void MdoApplication::setProjects(QHash<QString, Project *> *value)
 
 Project *MdoApplication::getActiveProject() const
 {
-    return activeProject;
+    if(activeProject->getName().isEmpty()) {
+        if(projects->values().size() == 0) {
+           return new Project();
+        }  else {
+            return projects->values().at(0);
+
+        }
+    } else {
+        return activeProject;
+    }
 }
 
 void MdoApplication::setActiveProject(Project *value)
@@ -103,12 +112,12 @@ void MdoApplication::setProxyServer()
 
     if (SETTINGS_MANAGER->getBool("Proxy/enabled")) {
         QNetworkProxy::setApplicationProxy(
-            QNetworkProxy(QNetworkProxy::HttpCachingProxy,
-                          SETTINGS_MANAGER->getString("Proxy/hostname"),
-                          SETTINGS_MANAGER->getInt("Proxy/port"),
-                          SETTINGS_MANAGER->getString("Proxy/username"),
-                          SETTINGS_MANAGER->getPassword("Proxy/password")
-                         ));
+                    QNetworkProxy(QNetworkProxy::HttpCachingProxy,
+                                  SETTINGS_MANAGER->getString("Proxy/hostname"),
+                                  SETTINGS_MANAGER->getInt("Proxy/port"),
+                                  SETTINGS_MANAGER->getString("Proxy/username"),
+                                  SETTINGS_MANAGER->getPassword("Proxy/password")
+                                  ));
         qDebug("Proxy Server Enabled");
     } else
         qDebug("Proxy server disabled");
@@ -139,14 +148,14 @@ QString MdoApplication::getSystemMemory()
 #endif
 
 #ifdef __MINGW32__
-//        MEMORYSTATUSEX memory_status;
-//        ZeroMemory(&memory_status, sizeof(MEMORYSTATUSEX));
-//        memory_status.dwLength = sizeof(MEMORYSTATUSEX);
-//        if (GlobalMemoryStatusEx(&memory_status)) {
-//          system_info.append(
-//                mem = QString(" %1MB")
-//                .arg(memory_status.ullTotalPhys / (1024 * 1024)));
-//        }
+    //        MEMORYSTATUSEX memory_status;
+    //        ZeroMemory(&memory_status, sizeof(MEMORYSTATUSEX));
+    //        memory_status.dwLength = sizeof(MEMORYSTATUSEX);
+    //        if (GlobalMemoryStatusEx(&memory_status)) {
+    //          system_info.append(
+    //                mem = QString(" %1MB")
+    //                .arg(memory_status.ullTotalPhys / (1024 * 1024)));
+    //        }
 #endif
 
     return mem;

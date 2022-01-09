@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2020 code0x378
+* Copyright (C) 2016-2021 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -113,9 +113,9 @@ void WidgetMainWindow::changeProject()
 
     ui->lineEditWebsite->setVisible(false);
 
-    ProjectType p = APP->getActiveProject()->getType();
+    int p = APP->getActiveProject()->getType();
     switch (p) {
-    case ProjectType::Link:
+    case 3:
         ui->lineEditWebsite->setVisible(true);
         break;
     default:

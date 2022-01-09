@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2020 code0x378
+* Copyright (C) 2016-2021 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -72,7 +72,7 @@ QString MiddlemanPlugin::getDescription() const
 }
 QString MiddlemanPlugin::getCopyright() const
 {
-    return QString(tr("Copyright") + " 2020 code0x378.");
+    return QString(tr("Copyright") + " 2021 code0x378.");
 }
 QString MiddlemanPlugin::getLicense() const
 {

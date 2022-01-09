@@ -1,24 +1,21 @@
 #include "projecttablemodel.h"
 
 
-//! [0]
 ProjectTableModel::ProjectTableModel(QObject *parent)
     : QAbstractTableModel(parent)
 {
 }
 
-ProjectTableModel::ProjectTableModel(QList<Contact> contacts, QObject *parent)
+ProjectTableModel::ProjectTableModel(QList<Project *> projects, QObject *parent)
     : QAbstractTableModel(parent)
-    , contacts(contacts)
+    , projects(projects)
 {
 }
-//! [0]
 
-//! [1]
 int ProjectTableModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    return contacts.size();
+    return projects.size();
 }
 
 int ProjectTableModel::columnCount(const QModelIndex &parent) const
@@ -26,30 +23,30 @@ int ProjectTableModel::columnCount(const QModelIndex &parent) const
     Q_UNUSED(parent);
     return 2;
 }
-//! [1]
 
-//! [2]
 QVariant ProjectTableModel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
         return QVariant();
 
-    if (index.row() >= contacts.size() || index.row() < 0)
+    if (index.row() >= projects.size() || index.row() < 0)
         return QVariant();
 
     if (role == Qt::DisplayRole) {
-        const auto &contact = contacts.at(index.row());
+        const auto &project = projects.at(index.row());
 
         if (index.column() == 0)
-            return contact.name;
+            return project->getName();
         else if (index.column() == 1)
-            return contact.address;
+            return project->getDescription();
+        else if (index.column() == 2)
+            return project->getIsDefault();
+        else if (index.column() == 3)
+            return project->getTags();
     }
     return QVariant();
 }
-//! [2]
 
-//! [3]
 QVariant ProjectTableModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
     if (role != Qt::DisplayRole)
@@ -57,64 +54,64 @@ QVariant ProjectTableModel::headerData(int section, Qt::Orientation orientation,
 
     if (orientation == Qt::Horizontal) {
         switch (section) {
-            case 0:
-                return tr("Name");
+        case 0:
+            return tr("Name");
 
-            case 1:
-                return tr("Address");
+        case 1:
+            return tr("Description");
 
-            default:
-                return QVariant();
+        case 2:
+            return tr("Default");
+
+        case 3:
+            return tr("Tags");
+
+        default:
+            return QVariant();
         }
     }
     return QVariant();
 }
-//! [3]
 
-//! [4]
 bool ProjectTableModel::insertRows(int position, int rows, const QModelIndex &index)
 {
     Q_UNUSED(index);
     beginInsertRows(QModelIndex(), position, position + rows - 1);
 
     for (int row = 0; row < rows; ++row)
-        contacts.insert(position, { QString(), QString() });
+        //        projects.insert(position, { QString(), QString() });
 
-    endInsertRows();
+        endInsertRows();
     return true;
 }
-//! [4]
 
-//! [5]
 bool ProjectTableModel::removeRows(int position, int rows, const QModelIndex &index)
 {
     Q_UNUSED(index);
     beginRemoveRows(QModelIndex(), position, position + rows - 1);
 
     for (int row = 0; row < rows; ++row)
-        contacts.removeAt(position);
+        projects.removeAt(position);
 
     endRemoveRows();
     return true;
 }
-//! [5]
 
-//! [6]
 bool ProjectTableModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
     if (index.isValid() && role == Qt::EditRole) {
         int row = index.row();
 
-        auto contact = contacts.value(row);
+        auto project = projects.value(row);
 
         if (index.column() == 0)
-            contact.name = value.toString();
+            project->setName(value.toString());
         else if (index.column() == 1)
-            contact.address = value.toString();
+            project->setTags(value.toString());
         else
             return false;
 
-        contacts.replace(row, contact);
+        //        projects.replace(row, project);
         emit(dataChanged(index, index));
 
         return true;
@@ -122,9 +119,7 @@ bool ProjectTableModel::setData(const QModelIndex &index, const QVariant &value,
 
     return false;
 }
-//! [6]
 
-//! [7]
 Qt::ItemFlags ProjectTableModel::flags(const QModelIndex &index) const
 {
     if (!index.isValid())
@@ -132,11 +127,8 @@ Qt::ItemFlags ProjectTableModel::flags(const QModelIndex &index) const
 
     return QAbstractTableModel::flags(index) | Qt::ItemIsEditable;
 }
-//! [7]
 
-//! [8]
-QList<Contact> ProjectTableModel::getContacts() const
+QList<Project *> ProjectTableModel::getProjects() const
 {
-    return contacts;
+    return projects;
 }
-//! [8]
