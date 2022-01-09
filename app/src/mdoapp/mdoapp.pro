@@ -1,6 +1,6 @@
 include(../defaults.pri)
 
-QT += core gui network widgets printsupport help webenginewidgets
+QT += core gui network widgets help webenginewidgets sql
 TEMPLATE = app
 INCLUDEPATH += src
 DESTDIR += $$PWD/../../dist/dist-apps
@@ -63,7 +63,7 @@ RESOURCES += \
     resources/mdoapp.qrc
 
 win32 {
-    TARGET = "MarkdownOrganizer.exe"
+    TARGET = "MarkdownOrganizer"
 }
 macx {
     TARGET = "MarkdownOrganizer"
@@ -74,15 +74,18 @@ linux {
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../mdocore/release/ -lmdocore
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../mdocore/debug/ -lmdocore
-else:unix: LIBS += -L$$OUT_PWD/../mdocore/ -lmdocore
+else:unix:LIBS += -L$$OUT_PWD/../mdocore/ -lmdocore
 
 INCLUDEPATH += $$PWD/../mdocore
 DEPENDPATH += $$PWD/../mdocore
 
+# Make sure the static lib is always relinked when it changes.  Qt isn't doing this automatically. Not sure if it should.
+win32:POST_TARGETDEPS += $$OUT_PWD/../mdocore/libmdocore.lib
+else:unix:POST_TARGETDEPS += $$OUT_PWD/../mdocore/libmdocore.a
+
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../lib/SmtpClient/release/ -lSmtpClient
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../lib/SmtpClient/debug/ -lSmtpClient
-else:unix: LIBS += -L$$OUT_PWD/../lib/SmtpClient/ -lSMTPClient
+else:unix:LIBS += -L$$OUT_PWD/../lib/SmtpClient/ -lSMTPClient
 
 INCLUDEPATH += $$PWD/../lib/SmtpClient
 DEPENDPATH += $$PWD/../lib/SmtpClient
-
