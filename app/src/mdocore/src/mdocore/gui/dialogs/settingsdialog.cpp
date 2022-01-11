@@ -23,6 +23,8 @@
 #include "mdocore/settingsmanager.h"
 #include "mdocore/util/qtutils.h"
 
+#include <QMessageBox>
+
 SettingsDialog::SettingsDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SettingsDialog)
@@ -43,6 +45,9 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     loadDefaults();
     loadSettings();
 
+    VERIFY(connect(ui->themeComboBox, SIGNAL(currentIndexChanged(QString)), this,
+                   SLOT(notifyToRestart())));
+
     LOG_DEBUG("Settings dialog loaded");
 }
 
@@ -56,6 +61,10 @@ void SettingsDialog::handleTreeMenuSelection(QTreeWidgetItem *item, int idx)
     } else if (itemText == "Email") {
         ui->stackedWidget->setCurrentIndex(2);
     }
+}
+
+void SettingsDialog::notifyToRestart() {
+    restartRequired = true;
 }
 
 void SettingsDialog::accept()
@@ -75,6 +84,10 @@ void SettingsDialog::accept()
                                  ui->emailPortLineEdit->text());
 
     SETTINGS_MANAGER->saveSettings();
+
+    if(restartRequired) {
+        QMessageBox::information(this, tr("Restart Required"), tr("Please restart for the changes to take effect."));
+    }
     close();
 }
 
@@ -92,21 +105,21 @@ void SettingsDialog::loadDefaults()
 void  SettingsDialog::loadSettings()
 {
     ui->themeComboBox->setCurrentText(
-        SETTINGS_MANAGER->getString("Interface/Theme", "Fusion"));
+                SETTINGS_MANAGER->getString("Interface/Theme", "Fusion"));
     ui->colorSchemeComboBox->setCurrentText(
-        SETTINGS_MANAGER->getString("Interface/ColorScheme", "Dark"));
+                SETTINGS_MANAGER->getString("Interface/ColorScheme", "Dark"));
 
     ui->emailServerLineEdit->setText(
-        SETTINGS_MANAGER->getString("Email/Server", ""));
+                SETTINGS_MANAGER->getString("Email/Server", ""));
 
     ui->emailUserLineEdit->setText(
-        SETTINGS_MANAGER->getString("Email/User", ""));
+                SETTINGS_MANAGER->getString("Email/User", ""));
 
     ui->emailPasswordLineEdit->setText(
-        SETTINGS_MANAGER->getString("Email/Password", ""));
+                SETTINGS_MANAGER->getString("Email/Password", ""));
 
     ui->emailPortLineEdit->setText(
-        SETTINGS_MANAGER->getString("Email/Port", ""));
+                SETTINGS_MANAGER->getString("Email/Port", ""));
 }
 
 SettingsDialog::~SettingsDialog()

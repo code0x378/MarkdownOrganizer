@@ -37,11 +37,14 @@ public:
 private slots:
     void handleTreeMenuSelection(QTreeWidgetItem *item, int idx);
     void accept();
+    void notifyToRestart();
 
 private:
     Ui::SettingsDialog *ui;
     void loadDefaults();
     void loadSettings();
+
+    bool restartRequired;
 };
 
 #endif // SETTINGSDIALOG_H

@@ -42,7 +42,20 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="generalPage"/>
+      <widget class="QWidget" name="generalPage">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLabel" name="tempMsgLabel">
+          <property name="text">
+           <string>There are no general settings</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="intefacePage">
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
