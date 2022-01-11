@@ -171,32 +171,9 @@ int main(int argc, char *argv[])
     // QDir directory(*APP->getConfigDirectory() + "/data/projects");
     QStringList dataFiles = directory.entryList(QStringList() << "*.ini", QDir::Files);
 
-    foreach(QString filename, dataFiles) {
-        QString path = qApp->applicationDirPath() + "/data/projects/" + filename;
-        QSettings *settings = new QSettings(path, QSettings::IniFormat);
+    foreach(QString fileName, dataFiles) {
 
-        Project  *project = new Project();
-        settings->beginGroup("Project");
-
-        const QStringList childKeys = settings->childKeys();
-        foreach (const QString &childKey, childKeys)
-           LOG_INFO(settings->value(childKey).toString());
-
-
-        project->setFileName(filename);
-        project->setName(settings->value("title", "").toString());
-        project->setType(settings->value("type", false).toInt());
-        project->setDescription(settings->value("description", "").toString());
-        project->setWorkingDirectory(settings->value("workingDirectory", "").toString());
-        project->setPostSaveCommmand(settings->value("postSaveCommand", "").toString());
-        project->setTags(settings->value("tags", "").toString());
-        project->setCategories(settings->value("categories", "").toString());
-        project->setIsDefault(settings->value("isDefault", false).toBool());
-        project->setPlugins(settings->value("plugins", "").toString());
-        project->setEmailTo(settings->value("emailTo", "").toString());
-        project->setEmailFrom(settings->value("emailFrom", "").toString());
-        settings->endGroup();
-
+        Project *project = Project::loadProject(fileName);
 
         if (project->getIsDefault() == 1) {
             app.setActiveProject(project);

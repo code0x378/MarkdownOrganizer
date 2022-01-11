@@ -198,3 +198,27 @@ void Project::deleteProject(Project *project)
     QFile file (path);
     file.remove();
 }
+
+Project*  Project::loadProject(QString fileName)
+{
+    QString path = qApp->applicationDirPath() + "/data/projects/" + fileName;
+    QSettings *settings = new QSettings(path, QSettings::IniFormat);
+    Project  *project = new Project();
+
+    settings->beginGroup("Project");
+    project->setFileName(fileName);
+    project->setName(settings->value("title", "").toString());
+    project->setType(settings->value("type", false).toInt());
+    project->setDescription(settings->value("description", "").toString());
+    project->setWorkingDirectory(settings->value("workingDirectory", "").toString());
+    project->setPostSaveCommmand(settings->value("postSaveCommand", "").toString());
+    project->setTags(settings->value("tags", "").toString());
+    project->setCategories(settings->value("categories", "").toString());
+    project->setIsDefault(settings->value("isDefault", false).toBool());
+    project->setPlugins(settings->value("plugins", "").toString());
+    project->setEmailTo(settings->value("emailTo", "").toString());
+    project->setEmailFrom(settings->value("emailFrom", "").toString());
+    settings->endGroup();
+
+    return project;
+}

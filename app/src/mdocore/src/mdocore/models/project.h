@@ -77,6 +77,7 @@ public:
 
     static void saveProject(Project *project);
     static void deleteProject(Project *project);
+    static Project* loadProject(QString fileName);
 
 private:
 
