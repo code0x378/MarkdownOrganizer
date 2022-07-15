@@ -1,6 +1,6 @@
 /*
 * Markdown Organizer
-* Copyright (C) 2016-2020 code0x378
+* Copyright (C) 2016-2021 code0x378
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -360,6 +360,44 @@ QSqlError initDb()
                               "categories varchar,  website varchar, filePath varchar, project int)")))
         return q.lastError();
 
+//    if (!q.prepare(
+//                QLatin1String("insert into resource(title, author, date, content, tags, categories, website, filePath, project) values(?, ?, ?, ?, ?, ?, ?, ?, ?)")))
+//        return q.lastError();
+
+//    QVariant resourceOneId = addResource(q,
+//                                         QLatin1String("Some important to say"),
+//                                         QLatin1String("2017-01-01"),
+//                                         QLatin1String("Author"),
+//                                         QLatin1String("#hello"),
+//                                         QLatin1String("linux, arch"),
+//                                         QLatin1String("SysAdmin"),
+//                                         QLatin1String(""),
+//                                         QLatin1String("c:\\Users\\jeff\\Desktop"),
+//                                         knowledgeProjectId
+//                                         );
+//    QVariant resourceTwoId = addResource(q,
+//                                         QLatin1String("Some else to say"),
+//                                         QLatin1String("2016-01-01"),
+//                                         QLatin1String("Me"),
+//                                         QLatin1String("#hi"),
+//                                         QLatin1String("linux"),
+//                                         QLatin1String("Dev"),
+//                                         QLatin1String(""),
+//                                         QLatin1String("c:\\Users\\jeff\\Desktop"),
+//                                         knowledgeProjectId
+//                                         );
+//    QVariant resourceThreeId = addResource(q,
+//                                           QLatin1String("Some more to say"),
+//                                           QLatin1String("2017-01-01"),
+//                                           QLatin1String("Paulva"),
+//                                           QLatin1String("#howdy"),
+//                                           QLatin1String("FreeBSD"),
+//                                           QLatin1String("Dev"),
+//                                           QLatin1String(""),
+//                                           QLatin1String("c:\\Users\\jeff\\Desktop"),
+//                                           coolstuffProjectId
+//                                           );
+
 
     /********************************************************
      * History
@@ -369,6 +407,44 @@ QSqlError initDb()
                 QLatin1String("create table history(id integer primary key, title varchar, author varchar, date varchar, content text, tags varchar, "
                               "categories varchar,  website varchar, filePath varchar, resource int)")))
         return q.lastError();
+
+//    if (!q.prepare(
+//                QLatin1String("insert into history(title, author, date, content, tags, categories, website, filePath, resource) values(?, ?, ?, ?, ?, ?, ?, ?, ?)")))
+//        return q.lastError();
+
+//    QVariant exampleHistoryOne = addHistory(q,
+//                                            QLatin1String("Some important to say"),
+//                                            QLatin1String("2017-01-01"),
+//                                            QLatin1String("Author"),
+//                                            QLatin1String("#hello"),
+//                                            QLatin1String("linux, arch"),
+//                                            QLatin1String("SysAdmin"),
+//                                            QLatin1String(""),
+//                                            QLatin1String("c:\\Users\\jeff\\Desktop"),
+//                                            resourceOneId
+//                                            );
+//    QVariant exampleHistoryTwo = addHistory(q,
+//                                            QLatin1String("Some else to say"),
+//                                            QLatin1String("2016-01-01"),
+//                                            QLatin1String("Me"),
+//                                            QLatin1String("#hi"),
+//                                            QLatin1String("linux"),
+//                                            QLatin1String("Dev"),
+//                                            QLatin1String(""),
+//                                            QLatin1String("c:\\Users\\jeff\\Desktop"),
+//                                            resourceTwoId
+//                                            );
+//    QVariant exampleHistoryThree = addHistory(q,
+//                                              QLatin1String("Some more to say"),
+//                                              QLatin1String("2017-01-01"),
+//                                              QLatin1String("Paulva"),
+//                                              QLatin1String("#howdy"),
+//                                              QLatin1String("FreeBSD"),
+//                                              QLatin1String("Dev"),
+//                                              QLatin1String(""),
+//                                              QLatin1String("c:\\Users\\jeff\\Desktop"),
+//                                              resourceThreeId
+//                                              );
 
 
     return QSqlError();

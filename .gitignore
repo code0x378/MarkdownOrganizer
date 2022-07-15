@@ -45,14 +45,12 @@ Thumbs.db
 app/resources/webapp/tmp/*
 */data/*.db
 */logs/*.log
-*.rpt
 nt_18.1.bin
 nt_18.0.bin
 imdo_18.0.bin
 *.pyc
 temp/*
 *.tmp
-*.o
 cache/*
 .settings/*
 .project
@@ -62,14 +60,12 @@ bin/play2/repository/*
 */bower_components/*
 node_modules/*
 dev/temp
-target/*
 build/*
 dist/*
 server/static
 */precompiled/*
 webapp/cntrack/precompiled/*
 webapp/cntrack/tmp/*
-*.pyc
 webapp/resources/*
 *.tsv
 *.hprof
@@ -81,7 +77,6 @@ dev/admin/.nb-gradle/profiles/private/aux-config
 gradlew.bat
 gradlew
 *.kate-swp
-*.pyc
 __pycache__
 gradle-wrapper.properties
 */tmp/*
@@ -176,8 +171,6 @@ build/
 *_p.c
 *.ilk
 *.meta
-*.obj
-*.pch
 *.pdb
 *.pgc
 *.pgd
@@ -186,14 +179,11 @@ build/
 *.tlb
 *.tli
 *.tlh
-*.tmp
 *.tmp_proj
-*.log
 *.vspscc
 *.vssscc
 .builds
 *.pidb
-*.log
 *.scc
 
 ## Visual C++ cache files
@@ -297,7 +287,6 @@ ClientBin/
 ## Windows Ignores
 
 $RECYCLE.BIN/
-Thumbs.db
 ehthumbs.db
 Desktop.ini
 .nb-gradle/*
@@ -317,3 +306,4 @@ out/*
 app/installer/*
 app/dist/*
 app/backup/*
+/app/src/mdocore/src/mdocore/db/initdb.h
