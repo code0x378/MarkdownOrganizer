@@ -21,6 +21,7 @@
 
 #include <QWebEngineView>
 #include <QWebEngineSettings>
+#include <QDesktopWidget>
 
 #include "mdodockwidget.h"
 #include "mdocore/util/qtutils.h"
@@ -42,6 +43,7 @@ PreviewDockWidget::PreviewDockWidget(QWidget *parent) :
     ui->setupUi(this);
 
     view = new QWebEngineView(this);
+    view->setZoomFactor(APP->desktop()->logicalDpiX()/96.0*100.0/100);
     view->settings()->setAttribute(QWebEngineSettings::FocusOnNavigationEnabled,
                                    false);
     QVBoxLayout *layout = new QVBoxLayout();
