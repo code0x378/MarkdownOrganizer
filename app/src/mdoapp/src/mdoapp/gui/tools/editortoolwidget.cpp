@@ -193,71 +193,54 @@ void EditorToolWidget::insertDate()
 
 void EditorToolWidget::formatBold()
 {
-    if (!ui->mdPlainTextEdit->textCursor().hasSelection())
-        return;
     ui->mdPlainTextEdit->textCursor().insertText(QString("**%1**").arg(
                                                      ui->mdPlainTextEdit->textCursor().selectedText()));
 }
 
 void EditorToolWidget::formatItalic()
 {
-    if (!ui->mdPlainTextEdit->textCursor().hasSelection())
-        return;
     ui->mdPlainTextEdit->textCursor().insertText(QString("*%1*").arg(
                                                      ui->mdPlainTextEdit->textCursor().selectedText()));
 }
 
 void EditorToolWidget::formatH1()
 {
-    if (!ui->mdPlainTextEdit->textCursor().hasSelection())
-        return;
     ui->mdPlainTextEdit->textCursor().insertText(QString("# %1").arg(
-                                                     ui->mdPlainTextEdit->textCursor().selectedText()));
+        ui->mdPlainTextEdit->textCursor().selectedText()));
 }
 
 void EditorToolWidget::formatH2()
 {
-    if (!ui->mdPlainTextEdit->textCursor().hasSelection())
-        return;
     ui->mdPlainTextEdit->textCursor().insertText(QString("## %1").arg(
-                                                     ui->mdPlainTextEdit->textCursor().selectedText()));
+        ui->mdPlainTextEdit->textCursor().selectedText()));
 }
 
 void EditorToolWidget::formatH3()
 {
-    if (!ui->mdPlainTextEdit->textCursor().hasSelection())
-        return;
     ui->mdPlainTextEdit->textCursor().insertText(QString("### %1").arg(
-                                                     ui->mdPlainTextEdit->textCursor().selectedText()));
+        ui->mdPlainTextEdit->textCursor().selectedText()));
 }
 
 void EditorToolWidget::formatLink()
 {
-    if (!ui->mdPlainTextEdit->textCursor().hasSelection())
-        return;
+
     ui->mdPlainTextEdit->textCursor().insertText(QString("[%1](http://)").arg(
-                                                     ui->mdPlainTextEdit->textCursor().selectedText()));
+        ui->mdPlainTextEdit->textCursor().selectedText()));
 }
 
 void EditorToolWidget::formatCode()
 {
-    if (!ui->mdPlainTextEdit->textCursor().hasSelection())
-        return;
     ui->mdPlainTextEdit->textCursor().insertText(QString("```\n%1\n```").arg(
-                                                     ui->mdPlainTextEdit->textCursor().selectedText()));
+        ui->mdPlainTextEdit->textCursor().selectedText()));
 }
 
 void EditorToolWidget::formatUl()
 {
-    if (!ui->mdPlainTextEdit->textCursor().hasSelection())
-        return;
     formatLines("* ");
 }
 
 void EditorToolWidget::formatBlockQuote()
 {
-    if (!ui->mdPlainTextEdit->textCursor().hasSelection())
-        return;
     formatLines("> ");
 }
 
