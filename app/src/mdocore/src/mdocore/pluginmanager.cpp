@@ -72,7 +72,7 @@ void PluginManager::loadPlugins()
 #endif
     pluginsDir.cd("plugins");
 
-    foreach (QString fileName, pluginsDir.entryList(QDir::Files)) {
+    Q_FOREACH (QString fileName, pluginsDir.entryList(QDir::Files)) {
         QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
         QObject *plugin = loader.instance();
         if (plugin != NULL) {
@@ -98,7 +98,7 @@ void PluginManager::setPluginList(const QList<IPlugin *> &value)
 
 IPlugin *PluginManager::getActivePlugin()
 {
-    foreach (IPlugin *plugin,  pluginList) {
+    Q_FOREACH (IPlugin *plugin,  pluginList) {
         if (plugin->getName() == "Statica") {
             return plugin;
         }

@@ -1068,7 +1068,7 @@ QIcon QtAwesome::icon(int character, const QVariantMap &options)
 QIcon QtAwesome::icon(const QString &name, const QVariantMap &options)
 {
     // when it's a named codepoint
-    if ( namedCodepoints_.count(name) ) {
+    if ( namedCodepoints_.contains(name) ) {
         return icon( namedCodepoints_.value(name), options );
     }
 

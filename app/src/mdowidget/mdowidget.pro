@@ -1,6 +1,6 @@
 include(../defaults.pri)
 
-QT += core gui network widgets printsupport help opengl qml quick quickwidgets
+QT += core gui network widgets opengl sql
 TEMPLATE = app
 INCLUDEPATH += src
 DESTDIR += $$PWD/../../dist/dist-apps

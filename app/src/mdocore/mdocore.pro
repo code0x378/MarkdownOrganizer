@@ -1,4 +1,6 @@
-QT += core gui network widgets printsupport help sql
+QT += core gui network widgets sql
+
+CONFIG += c++17
 
 TARGET = mdocore
 TEMPLATE = lib

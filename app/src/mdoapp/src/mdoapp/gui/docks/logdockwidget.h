@@ -33,7 +33,7 @@ public:
     explicit LogDockWidget(QWidget *parent = 0);
     ~LogDockWidget();
 
-public slots:
+public Q_SLOTS:
     void handleMessage(const QString msg);
 
 private:

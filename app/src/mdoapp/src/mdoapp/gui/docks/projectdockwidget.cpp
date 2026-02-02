@@ -87,7 +87,7 @@ void ProjectDockWidget::changeProject()
     APP->getActiveProject()->setCurrentDirectory(
         APP->getActiveProject()->getWorkingDirectory());
     model->setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
-    emit projectChanged(projectName);
+    Q_EMIT projectChanged(projectName);
     LOG_INFO("Project changed:" + projectName);
 }
 
@@ -110,7 +110,7 @@ void ProjectDockWidget::selectActiveProduct()
     APP->getActiveProject()->setCurrentDirectory(
         APP->getActiveProject()->getWorkingDirectory());
     model->setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
-    emit projectChanged(projectName);
+    Q_EMIT projectChanged(projectName);
 }
 
 void ProjectDockWidget::selectFile(const QModelIndex index)
@@ -122,7 +122,7 @@ void ProjectDockWidget::loadFile(const QModelIndex index)
 {
     QFileInfo fileInfo(*activeFilePath);
     if (fileInfo.isDir()) {
-        if (activeFilePath + QDir::separator() ==
+        if (*activeFilePath + QDir::separator() ==
                 APP->getActiveProject()->getWorkingDirectory())
             model->setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
         else
@@ -134,7 +134,7 @@ void ProjectDockWidget::loadFile(const QModelIndex index)
                                                      QDir::separator());
         return;
     }
-    emit fileSelected(*activeFilePath);
+    Q_EMIT fileSelected(*activeFilePath);
 
 }
 
@@ -157,7 +157,7 @@ void ProjectDockWidget::deleteFile()
     } else {
         LOG_INFO("File deletion cancelled");
     }
-    emit fileDeleted(*activeFilePath);
+    Q_EMIT fileDeleted(*activeFilePath);
 }
 
 void ProjectDockWidget::filterFiles()

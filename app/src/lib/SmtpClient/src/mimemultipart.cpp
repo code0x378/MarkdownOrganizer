@@ -37,7 +37,7 @@ MimeMultiPart::MimeMultiPart(MultiPartType type)
     this->cEncoding = _8Bit;
 
     QCryptographicHash md5(QCryptographicHash::Md5);
-    md5.addData(QByteArray().append(qrand()));
+    md5.addData(QByteArray().append(rand()));
     cBoundary = md5.result().toHex();
 }
 
@@ -62,12 +62,12 @@ void MimeMultiPart::prepare()
 
     content = "";
     for (it = parts.begin(); it != parts.end(); it++) {
-        content += "--" + cBoundary + "\r\n";
+        content += "--" + cBoundary.toUtf8() + "\r\n";
         (*it)->prepare();
-        content += (*it)->toString();
+        content += (*it)->toString().toUtf8();
     };
 
-    content += "--" + cBoundary + "--\r\n";
+    content += "--" + cBoundary.toUtf8() + "--\r\n";
 
     MimePart::prepare();
 }

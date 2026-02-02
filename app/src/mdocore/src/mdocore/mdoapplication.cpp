@@ -41,8 +41,8 @@ MdoApplication::MdoApplication(int &argc, char **argv):
         dir.mkpath(".");
     }
 
-    logFile = new QString(configDirectory + QDir::separator() + "log.txt");
-    settingsFile = new QString(configDirectory + QDir::separator() +
+    logFile = new QString(*configDirectory + QDir::separator() + "log.txt");
+    settingsFile = new QString(*configDirectory + QDir::separator() +
                                "settings.txt");
 }
 
@@ -64,7 +64,7 @@ void MdoApplication::setProjects(QHash<QString, Project *> *value)
 Project *MdoApplication::getActiveProject() const
 {
     if(activeProject->getName().isEmpty()) {
-        if(projects->values().size() == 0) {
+        if(projects->values().isEmpty()) {
            return new Project();
         }  else {
             return projects->values().at(0);

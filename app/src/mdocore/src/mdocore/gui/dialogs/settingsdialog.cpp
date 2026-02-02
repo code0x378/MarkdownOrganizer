@@ -45,8 +45,8 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     loadDefaults();
     loadSettings();
 
-    VERIFY(connect(ui->themeComboBox, SIGNAL(currentIndexChanged(QString)), this,
-                   SLOT(notifyToRestart())));
+    connect(ui->themeComboBox, SIGNAL(currentIndexChanged(QString)), this,
+                   SLOT(notifyToRestart()));
 
     LOG_DEBUG("Settings dialog loaded");
 }

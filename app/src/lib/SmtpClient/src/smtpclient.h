@@ -159,7 +159,7 @@ protected:
 
     /* [5] --- */
 
-protected slots:
+protected Q_SLOTS:
 
     /* [6] Protected slots */
 
@@ -170,7 +170,7 @@ protected slots:
     /* [6] --- */
 
 
-signals:
+Q_SIGNALS:
 
     /* [7] Signals */
 

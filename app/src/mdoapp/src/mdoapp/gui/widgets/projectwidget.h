@@ -33,14 +33,14 @@ class ProjectWidget : public QWidget
 public:
     explicit ProjectWidget(QWidget *parent = 0);
     ~ProjectWidget();
-signals:
+Q_SIGNALS:
     void fileSelected(QString filePath);
     void projectChanged(const QString projectName);
 
-public slots:
+public Q_SLOTS:
     void changeProject();
 
-private slots:
+private Q_SLOTS:
     void loadFile(const QModelIndex index);
     void filterFiles();
 

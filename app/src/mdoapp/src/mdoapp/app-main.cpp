@@ -17,7 +17,8 @@
 */
 
 #include <QApplication>
-#include <QDesktopWidget>
+#include <QScreen>
+#include <QGuiApplication>
 #include <QtDebug>
 #include <QTextStream>
 #include <QSettings>
@@ -171,7 +172,7 @@ int main(int argc, char *argv[])
     // QDir directory(*APP->getConfigDirectory() + "/data/projects");
     QStringList dataFiles = directory.entryList(QStringList() << "*.ini", QDir::Files);
 
-    foreach(QString fileName, dataFiles) {
+    Q_FOREACH(QString fileName, dataFiles) {
 
         Project *project = Project::loadProject(fileName);
 

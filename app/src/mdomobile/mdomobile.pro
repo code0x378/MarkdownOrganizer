@@ -1,6 +1,6 @@
 include(../defaults.pri)
 
-QT += quick quickcontrols2
+QT +=
 TEMPLATE = app
 TARGET = markdownorganizer-mobile
 CONFIG += c++11

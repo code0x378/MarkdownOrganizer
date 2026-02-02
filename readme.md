@@ -13,6 +13,7 @@ Status: Alpha
 
 ## Releases
 
+* 0.0.4 - Added Qt 6 support
 * 0.0.3 - Converted project management from db to simple text files
 * 0.0.2 - Added [Statica](https://github.com/jeffsmithdev/statica) Plugin
 * 0.0.1 - Basic editing and project management implemented

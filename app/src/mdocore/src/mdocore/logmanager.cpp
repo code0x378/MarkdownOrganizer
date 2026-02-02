@@ -70,7 +70,7 @@ void LogManager::fatal(const QString str)
 {
     QString s = formatLogMsg("FATAL", QDateTime::currentDateTimeUtc().toString(),
                              str);
-    emit messageLogged(s);
+    Q_EMIT messageLogged(s);
     *logStream << s;
     logStream->flush();
 }
@@ -79,7 +79,7 @@ void LogManager::error(const QString str)
 {
     const QString s = formatLogMsg("ERROR",
                                    QDateTime::currentDateTimeUtc().toString(), str);
-    emit messageLogged(str);
+    Q_EMIT messageLogged(str);
     *logStream << s;
     logStream->flush();
 }
@@ -88,7 +88,7 @@ void LogManager::warning(const QString str)
 {
     const QString s = formatLogMsg("WARNING",
                                    QDateTime::currentDateTimeUtc().toString(), str);
-    emit messageLogged(s);
+    Q_EMIT messageLogged(s);
     *logStream << s;
     logStream->flush();
 }
@@ -97,7 +97,7 @@ void LogManager::debug(const QString str)
 {
     const QString s = formatLogMsg("DEBUG",
                                    QDateTime::currentDateTimeUtc().toString(), str);
-    emit messageLogged(s);
+    Q_EMIT messageLogged(s);
     *logStream << s;
     logStream->flush();
 }
@@ -106,7 +106,7 @@ void LogManager::info(const QString str)
 {
     const QString s = formatLogMsg("INFO",
                                    QDateTime::currentDateTimeUtc().toString(), str);
-    emit messageLogged(s);
+    Q_EMIT messageLogged(s);
     *logStream << s;
     logStream->flush();
 }

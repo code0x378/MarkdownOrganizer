@@ -128,78 +128,76 @@ QSqlError initDb()
      ********************************************************/
 
     if (!q.exec(
-                QLatin1String("create table project_types(id integer primary key, name varchar, description varchar)")))
+                u"create table project_types(id integer primary key, name varchar, description varchar)"_qs))
         return q.lastError();
 
     if (!q.prepare(
-                QLatin1String("insert into project_types(name, description) values(?, ?)")))
+                u"insert into project_types(name, description) values(?, ?)"_qs))
         return q.lastError();
 
     QVariant genericProjectTypeId = addProjectType(q,
-                                                   QLatin1String("Generic"),
-                                                   QLatin1String("A generic project type"));
+                                                   u"Generic"_qs,
+                                                   u"A generic project type"_qs);
 
     QVariant blogProjectTypeId = addProjectType(q,
-                                                QLatin1String("Blog"),
-                                                QLatin1String("A project type for blogs, news, events and similar"));
+                                                u"Blog"_qs,
+                                                u"A project type for blogs, news, events and similar"_qs);
 
     QVariant linksProjectTypeId = addProjectType(q,
-                                                 QLatin1String("Links"),
-                                                 QLatin1String("A project type for simple links and directories"));
+                                                 u"Links"_qs,
+                                                 u"A project type for simple links and directories"_qs);
 
     QVariant helpProjectTypeId = addProjectType(q,
-                                                QLatin1String("Help"),
-                                                QLatin1String("A project type for help with TOC and other components"));
+                                                u"Help"_qs,
+                                                u"A project type for help with TOC and other components"_qs);
 
     QVariant notesProjectTypeId = addProjectType(q,
-                                                 QLatin1String("Notes"),
-                                                 QLatin1String("A project type for simple noes"));
+                                                 u"Notes"_qs,
+                                                 u"A project type for simple noes"_qs);
 
     /********************************************************
     * Projects
     ********************************************************/
 
     if (!q.exec(
-                QLatin1String("create table projects(id integer primary key, name varchar, description varchar, "
-                              "workingDirectory varchar, postSaveCommand varchar,  tags varchar,  categories varchar, projectType int, isDefault int, plugins varchar, emailTo varchar, emailFrom varchar)")))
+                u"create table projects(id integer primary key, name varchar, description varchar, workingDirectory varchar, postSaveCommand varchar,  tags varchar,  categories varchar, projectType int, isDefault int, plugins varchar, emailTo varchar, emailFrom varchar)"_qs))
         return q.lastError();
 
     if (!q.prepare(
-                QLatin1String("insert into projects(name, description, workingDirectory, postSaveCommand, tags, categories, projectType, isDefault, plugins, emailTo, emailFrom) "
-                              "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")))
+                u"insert into projects(name, description, workingDirectory, postSaveCommand, tags, categories, projectType, isDefault, plugins, emailTo, emailFrom) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"_qs))
         return q.lastError();
 
     QVariant knowledgeProjectId = addProject(q,
-                                             QLatin1String("LDBU - Knowledge"),
-                                             QLatin1String("Little Dog Big Universe Knowledge Repository"),
-                                             QLatin1String("c:\\data\\dev\\syntiva\\manicdev-www\\webapp\\content\\knowledge"),
-                                             QLatin1String("cd c:\\data\\dev\\syntiva\\manicdev-www\\bin && .\\deploy-s3.bat"),
-                                             QLatin1String("Linux, Arch, Ubuntu, Gnome, Kde, Qt, Java, JavaScript, Python, Kotlin, OSX, Windows, VCS, Cloud, Database"),
-                                             QLatin1String("SysAdmin, Development"),
+                                             u"LDBU - Knowledge"_qs,
+                                             u"Little Dog Big Universe Knowledge Repository"_qs,
+                                             u"c:\data\dev\syntiva\manicdev-www\webapp\content\knowledge"_qs,
+                                             u"cd c:\data\dev\syntiva\manicdev-www\bin && .\deploy-s3.bat"_qs,
+                                             u"Linux, Arch, Ubuntu, Gnome, Kde, Qt, Java, JavaScript, Python, Kotlin, OSX, Windows, VCS, Cloud, Database"_qs,
+                                             u"SysAdmin, Development"_qs,
                                              blogProjectTypeId,
                                              0,
                                              "Hugo,",
                                              "jsmith@syntiva.com",
                                              "jsmith@syntiva.com");
     QVariant coolstuffProjectId = addProject(q,
-                                             QLatin1String("LDBU - Coolstuff"),
-                                             QLatin1String("Little Dog Big Universe Coolstuff"),
-                                             QLatin1String("c:\\data\\dev\\syntiva\\manicdev-www\\webapp\\content\\coolstuff"),
-                                             QLatin1String("cd c:\\data\\dev\\syntiva\\manicdev-www\\bin && .\\deploy-s3.bat"),
-                                             QLatin1String("Apps, Open Source, Tools, Libraries, Linux, OSX, Windows, Robotics"),
-                                             QLatin1String("SysAdmin, Development, Other"),
+                                             u"LDBU - Coolstuff"_qs,
+                                             u"Little Dog Big Universe Coolstuff"_qs,
+                                             u"c:\data\dev\syntiva\manicdev-www\webapp\content\coolstuff"_qs,
+                                             u"cd c:\data\dev\syntiva\manicdev-www\bin && .\deploy-s3.bat"_qs,
+                                             u"Apps, Open Source, Tools, Libraries, Linux, OSX, Windows, Robotics"_qs,
+                                             u"SysAdmin, Development, Other"_qs,
                                              linksProjectTypeId,
                                              0,
                                              "Hugo, ",
                                              "jsmith@syntiva.com",
                                              "jsmith@syntiva.com");
     QVariant notesProjectId = addProject(q,
-                                         QLatin1String("Per - Notes"),
-                                         QLatin1String("Basic note taking"),
-                                         QLatin1String("c:\\data\\personal\\notes"),
-                                         QLatin1String("dir"),
-                                         QLatin1String("ArfArfBebe, code0x378, infoQuant, Shopping, Todo"),
-                                         QLatin1String("Personal, Work"),
+                                         u"Per - Notes"_qs,
+                                         u"Basic note taking"_qs,
+                                         u"c:\data\personal\notes"_qs,
+                                         u"dir"_qs,
+                                         u"ArfArfBebe, code0x378, infoQuant, Shopping, Todo"_qs,
+                                         u"Personal, Work"_qs,
                                          notesProjectTypeId,
                                          1,
                                          "Hugo,Mdo",
@@ -207,12 +205,12 @@ QSqlError initDb()
                                          "jsmith@syntiva.com");
 
     QVariant helpProjectId = addProject(q,
-                                        QLatin1String("MDO - Help"),
-                                        QLatin1String("markdownOrganizer Help System"),
-                                        QLatin1String("c:\\data\\dev\\syntiva\\markdownorganizer\\app\\src\\help"),
-                                        QLatin1String("dir"),
-                                        QLatin1String("Gui, Installation, Settings"),
-                                        QLatin1String("Free, Pro, Enterprise"),
+                                        u"MDO - Help"_qs,
+                                        u"markdownOrganizer Help System"_qs,
+                                        u"c:\data\dev\syntiva\markdownorganizer\app\src\help"_qs,
+                                        u"dir"_qs,
+                                        u"Gui, Installation, Settings"_qs,
+                                        u"Free, Pro, Enterprise"_qs,
                                         helpProjectTypeId,
                                         0,
                                         "Hugo, ",
@@ -220,36 +218,36 @@ QSqlError initDb()
                                         "jsmith@syntiva.com");
 
     QVariant gfHelpProjectId = addProject(q,
-                                          QLatin1String("GF - Help"),
-                                          QLatin1String("GF Help System"),
-                                          QLatin1String("c:\\data\\dev\\infoquant\\gf\\gf-help\\src\\main\\resources\\help\\docs"),
-                                          QLatin1String("dir"),
-                                          QLatin1String("Gui, Installation, Settings, Database, Security, Admin, Analytics"),
-                                          QLatin1String("GenomeFusion, Genomius, cnTrack"),
+                                          u"GF - Help"_qs,
+                                          u"GF Help System"_qs,
+                                          u"c:\data\dev\infoquant\gf\gf-help\src\main\resources\help\docs"_qs,
+                                          u"dir"_qs,
+                                          u"Gui, Installation, Settings, Database, Security, Admin, Analytics"_qs,
+                                          u"GenomeFusion, Genomius, cnTrack"_qs,
                                           helpProjectTypeId,
                                           0,
                                           "Hugo, ",
                                           "jsmith@syntiva.com",
                                           "jeff@infoquant.com");
     QVariant mitoProjectId = addProject(q,
-                                        QLatin1String("Mito - Website"),
-                                        QLatin1String("Mitotech static website"),
-                                        QLatin1String("c:\\data\\dev\\syntiva\\mitotechpharma-www\\webapp\\hugo\\content"),
-                                        QLatin1String("dir"),
-                                        QLatin1String("SKQ, Biotech, Conference, Dry Eye"),
-                                        QLatin1String("News, Events"),
+                                        u"Mito - Website"_qs,
+                                        u"Mitotech static website"_qs,
+                                        u"c:\data\dev\syntiva\mitotechpharma-www\webapp\hugo\content"_qs,
+                                        u"dir"_qs,
+                                        u"SKQ, Biotech, Conference, Dry Eye"_qs,
+                                        u"News, Events"_qs,
                                         blogProjectTypeId,
                                         0,
                                         "Hugo, ",
                                         "jsmith@syntiva.com",
                                         "jeff@infoquant.com");
     QVariant skqProjectId = addProject(q,
-                                       QLatin1String("SKQ - Website"),
-                                       QLatin1String("Skq static website"),
-                                       QLatin1String("c:\\data\\dev\\syntiva\\skq-www\\webapp\\hugo\\content"),
-                                       QLatin1String("dir"),
-                                       QLatin1String("SKQ, Biotech, Conference, Dry Eye, Mitotech"),
-                                       QLatin1String("News, Events, Publications"),
+                                       u"SKQ - Website"_qs,
+                                       u"Skq static website"_qs,
+                                       u"c:\data\dev\syntiva\skq-www\webapp\hugo\content"_qs,
+                                       u"dir"_qs,
+                                       u"SKQ, Biotech, Conference, Dry Eye, Mitotech"_qs,
+                                       u"News, Events, Publications"_qs,
                                        blogProjectTypeId,
                                        0,
                                        "Hugo, ",
@@ -265,36 +263,36 @@ QSqlError initDb()
 
 
     QVariant knowledgeProjectOSXId = addProject(q,
-                                                QLatin1String("LDBU (osx) - Knowledge"),
-                                                QLatin1String("Little Dog Big Universe Knowledge Repository"),
-                                                QLatin1String("/Users/jeff/data/dev/syntiva/code0x378-www/webapp/content/knowledge"),
-                                                QLatin1String("cd /Users/jeff/data/dev/syntiva/code0x378-www/bin && ./deploy-s3.sh"),
-                                                QLatin1String("Linux, Arch, Ubuntu, Gnome, Kde, Qt, Java, JavaScript, Python, Kotlin, OSX, Windows, VCS, Cloud, Database"),
-                                                QLatin1String("SysAdmin, Development"),
+                                                u"LDBU (osx) - Knowledge"_qs,
+                                                u"Little Dog Big Universe Knowledge Repository"_qs,
+                                                u"/Users/jeff/data/dev/syntiva/code0x378-www/webapp/content/knowledge"_qs,
+                                                u"cd /Users/jeff/data/dev/syntiva/code0x378-www/bin && ./deploy-s3.sh"_qs,
+                                                u"Linux, Arch, Ubuntu, Gnome, Kde, Qt, Java, JavaScript, Python, Kotlin, OSX, Windows, VCS, Cloud, Database"_qs,
+                                                u"SysAdmin, Development"_qs,
                                                 blogProjectTypeId,
                                                 0,
                                                 "Hugo,",
                                                 "jsmith@syntiva.com",
                                                 "jsmith@syntiva.com");
     QVariant coolstuffProjectOSXId = addProject(q,
-                                                QLatin1String("LDBU (osx) - Coolstuff"),
-                                                QLatin1String("Little Dog Big Universe Coolstuff"),
-                                                QLatin1String("/Users/jeff/data/dev/syntiva/code0x378-www/webapp/content/coolstuff"),
-                                                QLatin1String("cd /Users/jeff/data/dev/syntiva/code0x378-www/bin && ./deploy-s3.sh"),
-                                                QLatin1String("Apps, Open Source, Tools, Libraries, Linux, OSX, Windows, Robotics"),
-                                                QLatin1String("SysAdmin, Development, Other"),
+                                                u"LDBU (osx) - Coolstuff"_qs,
+                                                u"Little Dog Big Universe Coolstuff"_qs,
+                                                u"/Users/jeff/data/dev/syntiva/code0x378-www/webapp/content/coolstuff"_qs,
+                                                u"cd /Users/jeff/data/dev/syntiva/code0x378-www/bin && ./deploy-s3.sh"_qs,
+                                                u"Apps, Open Source, Tools, Libraries, Linux, OSX, Windows, Robotics"_qs,
+                                                u"SysAdmin, Development, Other"_qs,
                                                 linksProjectTypeId,
                                                 0,
                                                 "Hugo, ",
                                                 "jsmith@syntiva.com",
                                                 "jsmith@syntiva.com");
     QVariant notesProjectOSXId = addProject(q,
-                                            QLatin1String("Per (osx) - Notes"),
-                                            QLatin1String("Basic note taking"),
-                                            QLatin1String("/Users/jeff/data/personal/notes"),
-                                            QLatin1String("ls"),
-                                            QLatin1String("ArfArfBebe, code0x378, infoQuant, Shopping, Todo"),
-                                            QLatin1String("Personal, Work"),
+                                            u"Per (osx) - Notes"_qs,
+                                            u"Basic note taking"_qs,
+                                            u"/Users/jeff/data/personal/notes"_qs,
+                                            u"ls"_qs,
+                                            u"ArfArfBebe, code0x378, infoQuant, Shopping, Todo"_qs,
+                                            u"Personal, Work"_qs,
                                             notesProjectTypeId,
                                             1,
                                             "Hugo,Mdo",
@@ -302,12 +300,12 @@ QSqlError initDb()
                                             "jsmith@syntiva.com");
 
     QVariant helpProjectOSXId = addProject(q,
-                                           QLatin1String("MDO (osx) - Help"),
-                                           QLatin1String("markdownOrganizer Help System"),
-                                           QLatin1String("/Users/jeff/data/dev/syntiva/markdownorganizer/app/src/resources/help"),
-                                           QLatin1String("dir"),
-                                           QLatin1String("Gui, Installation, Settings"),
-                                           QLatin1String("Free, Pro, Enterprise"),
+                                           u"MDO (osx) - Help"_qs,
+                                           u"markdownOrganizer Help System"_qs,
+                                           u"/Users/jeff/data/dev/syntiva/markdownorganizer/app/src/resources/help"_qs,
+                                           u"dir"_qs,
+                                           u"Gui, Installation, Settings"_qs,
+                                           u"Free, Pro, Enterprise"_qs,
                                            helpProjectTypeId,
                                            0,
                                            "Hugo, ",
@@ -315,36 +313,36 @@ QSqlError initDb()
                                            "jsmith@syntiva.com");
 
     QVariant gfHelpProjectOSXId = addProject(q,
-                                             QLatin1String("GF (osx) - Help"),
-                                             QLatin1String("GF Help System"),
-                                             QLatin1String("/Users/jeff/data/dev/infoquant/gf/gf-help/src/main/resources/help/docs"),
-                                             QLatin1String("ls"),
-                                             QLatin1String("Gui, Installation, Settings, Database, Security, Admin, Analytics"),
-                                             QLatin1String("GenomeFusion, Genomius, cnTrack"),
+                                             u"GF (osx) - Help"_qs,
+                                             u"GF Help System"_qs,
+                                             u"/Users/jeff/data/dev/infoquant/gf/gf-help/src/main/resources/help/docs"_qs,
+                                             u"ls"_qs,
+                                             u"Gui, Installation, Settings, Database, Security, Admin, Analytics"_qs,
+                                             u"GenomeFusion, Genomius, cnTrack"_qs,
                                              helpProjectTypeId,
                                              0,
                                              "Hugo, ",
                                              "jsmith@syntiva.com",
                                              "jeff@infoquant.com");
     QVariant mitoProjectOSXId = addProject(q,
-                                           QLatin1String("Mito (osx) - Website"),
-                                           QLatin1String("Mitotech static website"),
-                                           QLatin1String("/Users/jeff/data/dev/syntiva/mitotechpharma-www/webapp/hugo/content"),
-                                           QLatin1String("ls"),
-                                           QLatin1String("SKQ, Biotech, Conference, Dry Eye"),
-                                           QLatin1String("News, Events"),
+                                           u"Mito (osx) - Website"_qs,
+                                           u"Mitotech static website"_qs,
+                                           u"/Users/jeff/data/dev/syntiva/mitotechpharma-www/webapp/hugo/content"_qs,
+                                           u"ls"_qs,
+                                           u"SKQ, Biotech, Conference, Dry Eye"_qs,
+                                           u"News, Events"_qs,
                                            blogProjectTypeId,
                                            0,
                                            "Hugo, ",
                                            "jsmith@syntiva.com",
                                            "jeff@infoquant.com");
     QVariant skqProjectOSXId = addProject(q,
-                                          QLatin1String("SKQ (osx) - Website"),
-                                          QLatin1String("Skq static website"),
-                                          QLatin1String("/Users/jeff/data/dev/syntiva/skq-www/webapp/hugo/content"),
-                                          QLatin1String("ls"),
-                                          QLatin1String("SKQ, Biotech, Conference, Dry Eye, Mitotech"),
-                                          QLatin1String("News, Events, Publications"),
+                                          u"SKQ (osx) - Website"_qs,
+                                          u"Skq static website"_qs,
+                                          u"/Users/jeff/data/dev/syntiva/skq-www/webapp/hugo/content"_qs,
+                                          u"ls"_qs,
+                                          u"SKQ, Biotech, Conference, Dry Eye, Mitotech"_qs,
+                                          u"News, Events, Publications"_qs,
                                           blogProjectTypeId,
                                           0,
                                           "Hugo, ",
@@ -356,8 +354,7 @@ QSqlError initDb()
      ********************************************************/
 
     if (!q.exec(
-                QLatin1String("create table resource(id integer primary key, title varchar, author varchar, date varchar, content text, tags varchar, "
-                              "categories varchar,  website varchar, filePath varchar, project int)")))
+                u"create table resource(id integer primary key, title varchar, author varchar, date varchar, content text, tags varchar, categories varchar,  website varchar, filePath varchar, project int)"_qs))
         return q.lastError();
 
 //    if (!q.prepare(
@@ -404,8 +401,7 @@ QSqlError initDb()
      ********************************************************/
 
     if (!q.exec(
-                QLatin1String("create table history(id integer primary key, title varchar, author varchar, date varchar, content text, tags varchar, "
-                              "categories varchar,  website varchar, filePath varchar, resource int)")))
+                u"create table history(id integer primary key, title varchar, author varchar, date varchar, content text, tags varchar, categories varchar,  website varchar, filePath varchar, resource int)"_qs))
         return q.lastError();
 
 //    if (!q.prepare(

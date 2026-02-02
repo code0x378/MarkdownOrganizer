@@ -38,7 +38,7 @@ public:
     void debug(const QString str);
     void info(const QString str);
 
-signals:
+Q_SIGNALS:
     void messageLogged(const QString msg);
 
 private:

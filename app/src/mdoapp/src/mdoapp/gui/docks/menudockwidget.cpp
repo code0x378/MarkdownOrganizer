@@ -29,7 +29,9 @@ MenuDockWidget::MenuDockWidget(QWidget *parent) :
     ui->setupUi(this);
     setWindowTitle(QApplication::translate("MenuDockWidget", "Tools", 0));
     setAllowedAreas(Qt::AllDockWidgetAreas);
-    setFeatures(QDockWidget::AllDockWidgetFeatures);
+    setFeatures(QDockWidget::DockWidgetClosable |
+                QDockWidget::DockWidgetMovable |
+                QDockWidget::DockWidgetFloatable);
     ui->menuTreeWidget->setColumnCount(1);
     QList<QTreeWidgetItem *> items;
     items.append(new QTreeWidgetItem((QTreeWidget *)0, QStringList("Dashboard")));

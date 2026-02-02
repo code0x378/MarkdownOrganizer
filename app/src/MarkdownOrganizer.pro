@@ -1,12 +1,12 @@
 TEMPLATE = subdirs
-CONFIG+=ordered c++11
+CONFIG+=ordered c++17
 SUBDIRS = \
     lib/SmtpClient \
     mdocore \
     mdoapp \
-    mdoplugins \
-    mdowidget \
-    mdomobile
+    mdoplugins
+    # mdowidget
+    # mdomobile
 
 mdoapp.depends = SmtpClient
 mdoapp.depends = mdocore

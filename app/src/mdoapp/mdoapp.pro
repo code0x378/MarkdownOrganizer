@@ -1,6 +1,8 @@
 include(../defaults.pri)
 
-QT += core gui network widgets help webenginewidgets sql
+QT += core gui network widgets sql webenginewidgets
+
+CONFIG += c++17
 TEMPLATE = app
 INCLUDEPATH += src
 DESTDIR += $$PWD/../../dist/dist-apps

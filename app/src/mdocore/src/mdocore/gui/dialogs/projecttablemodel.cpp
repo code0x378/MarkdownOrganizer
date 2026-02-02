@@ -112,7 +112,7 @@ bool ProjectTableModel::setData(const QModelIndex &index, const QVariant &value,
             return false;
 
         //        projects.replace(row, project);
-        emit(dataChanged(index, index));
+        Q_EMIT(dataChanged(index, index));
 
         return true;
     }

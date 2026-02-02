@@ -6,6 +6,8 @@
 
 QT       += core network
 
+CONFIG += c++17
+
 TARGET = SMTPClient
 
 # Build as an application

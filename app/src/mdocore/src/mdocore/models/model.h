@@ -47,9 +47,9 @@ private:
     QString upddatedBy;
     QDate updatedAt;
 
-signals:
+Q_SIGNALS:
 
-public slots:
+public Q_SLOTS:
 };
 
 #endif // MODEL_H
