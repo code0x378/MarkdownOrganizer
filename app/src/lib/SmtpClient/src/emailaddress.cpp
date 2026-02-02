@@ -30,6 +30,12 @@ EmailAddress::~EmailAddress()
 {
 }
 
+// Add this to emailaddress.cpp if it's not there
+EmailAddress::EmailAddress() : QObject()
+{
+    // Initialize any default members if necessary
+}
+
 /* [1] --- */
 
 

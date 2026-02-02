@@ -36,10 +36,10 @@ public:
     explicit PreviewDockWidget(QWidget *parent = 0);
     ~PreviewDockWidget();
 
-public slots:
+public Q_SLOTS:
     void showWelcomePage();
     void launchMdoWebsite();
-private slots:
+private Q_SLOTS:
     void updatePreview(QString);
 
 private:

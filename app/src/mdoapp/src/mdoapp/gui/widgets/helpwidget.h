@@ -34,7 +34,7 @@ public:
     explicit HelpWidget(QWidget *parent = 0);
     ~HelpWidget();
 
-private slots:
+private Q_SLOTS:
     void viewHelp(const QModelIndex index);
 
 private:

@@ -74,7 +74,7 @@ void ProjectWidget::changeProject()
     APP->getActiveProject()->setCurrentDirectory(
         APP->getActiveProject()->getWorkingDirectory());
     model->setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
-    emit projectChanged(projectName);
+    Q_EMIT projectChanged(projectName);
     LOG_INFO("Project changed:" + projectName);
 }
 
@@ -88,7 +88,7 @@ void ProjectWidget::selectActiveProduct()
     APP->getActiveProject()->setCurrentDirectory(
         APP->getActiveProject()->getWorkingDirectory());
     model->setFilter(QDir::AllEntries | QDir::NoDotAndDotDot);
-    emit projectChanged(projectName);
+    Q_EMIT projectChanged(projectName);
 }
 
 void ProjectWidget::loadFile(const QModelIndex index)
@@ -108,7 +108,7 @@ void ProjectWidget::loadFile(const QModelIndex index)
         APP->getActiveProject()->setCurrentDirectory(filePath + QDir::separator());
         return;
     }
-    emit fileSelected(filePath);
+    Q_EMIT fileSelected(filePath);
 
 }
 

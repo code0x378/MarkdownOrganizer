@@ -34,16 +34,16 @@ public:
     explicit EditorToolWidget(QWidget *parent = 0);
     ~EditorToolWidget();
 
-public slots:
+public Q_SLOTS:
     void loadFile(const QString filePath);
     void projectChanged(const QString projectName);
     void handleSave();
     void handleReset();
 
-signals:
+Q_SIGNALS:
     void htmlUpdated(QString filePath);
 
-private slots:
+private Q_SLOTS:
     void insertDate();
     void formatBold();
     void formatItalic();

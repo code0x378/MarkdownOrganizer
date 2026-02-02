@@ -29,7 +29,8 @@
 #include <QToolBar>
 #include <QToolTip>
 #include <QDockWidget>
-#include <QDesktopWidget>
+#include <QScreen>
+#include <QGuiApplication>
 #include <QPushButton>
 #include <QLabel>
 #include <QStatusBar>
@@ -44,19 +45,13 @@
 
 #include <mdocore/lib/QtAwesome/QtAwesome/QtAwesome.h>
 
-#include "mdocore/global.h"
 #include "ui_appmainwindow.h"
 #include "mdocore/util/qtutils.h"
-#include "mdocore/mdoapplication.h"
 #include "mdocore/gui/dialogs/aboutdialog.h"
 #include "mdocore/gui/dialogs/settingsdialog.h"
-#include "mdocore/gui/dialogs/plugindialog.h"
 #include "mdocore/gui/dialogs/projectdialog.h"
-#include "mdocore/iplugin.h"
-#include "mdocore/pluginmanager.h"
 #include "mdocore/settingsmanager.h"
 #include "mdocore/logmanager.h"
-#include "mdoapp/gui/browserwindow.h"
 #include "mdoapp/gui/docks/menudockwidget.h"
 #include "mdoapp/gui/docks/logdockwidget.h"
 #include "mdoapp/gui/docks/projectdockwidget.h"
@@ -347,9 +342,7 @@ void AppMainWindow::addStatusBar()
                              "   background-color: %3;"
                              "   border-style: inset;"
                              "}")
-                     .arg(buttonBgColor.name())
-                     .arg(buttonBorderBgColor.name())
-                     .arg(buttonPressedColor.name());
+                     .arg(buttonBgColor.name(), buttonBorderBgColor.name(), buttonPressedColor.name());
 
     QToolButton *log = new QToolButton(this);
     log->setText("");
@@ -506,22 +499,22 @@ void AppMainWindow::launchMainApp()
 
 void AppMainWindow::readUISettings()
 {
-    if (SETTINGS_MANAGER->getInt("Gui/x") > 0) {
-        int x = SETTINGS_MANAGER->getInt("Gui/x");
-        int y = SETTINGS_MANAGER->getInt("Gui/y");
-        int height = SETTINGS_MANAGER->getInt("Gui/height");
-        int width = SETTINGS_MANAGER->getInt("Gui/width");
-        setGeometry(x, y, width, height);
-    } else {
-        QRect rec = QApplication::desktop()->screenGeometry();
-        int height = rec.height();
-        int width = rec.width();
-        int windowHeight = height * .8;
-        int windowWidth = width * .8;
-        setGeometry(width / 2 - windowWidth / 2,
-                    height / 2 - windowHeight / 2, windowWidth,
-                    windowHeight);
-    }
+    // if (SETTINGS_MANAGER->getInt("Gui/x") > 0) {
+    //     int x = SETTINGS_MANAGER->getInt("Gui/x");
+    //     int y = SETTINGS_MANAGER->getInt("Gui/y");
+    //     int height = SETTINGS_MANAGER->getInt("Gui/height");
+    //     int width = SETTINGS_MANAGER->getInt("Gui/width");
+    //     setGeometry(x, y, width, height);
+    // } else {
+    //     QRect rec = QApplication::primaryScreen()->geometry();
+    //     int height = rec.height();
+    //     int width = rec.width();
+    //     int windowHeight = height * .8;
+    //     int windowWidth = width * .8;
+    //     setGeometry(width / 2 - windowWidth / 2,
+    //                 height / 2 - windowHeight / 2, windowWidth,
+    //                 windowHeight);
+    // }
 }
 
 void AppMainWindow::writeUISettings()

@@ -14,7 +14,9 @@ MOC_DIR = $$ParentDirectory
 OBJECTS_DIR = $$ParentDirectory
 LIBS += -L$$PWD/../../../build/markdownorganizer -lmdocore
 
-QT += widgets printsupport testlib
+QT += widgets testlib
+
+CONFIG += c++17
 HEADERS += src/mdoplugin/mdoplugin.h
 SOURCES += src/mdoplugin/mdoplugin.cpp
 RESOURCES +=

@@ -44,7 +44,7 @@ bool StaticaPlugin::save (const Project &project, const Resource &resource )
     QString compiled;
     QString filename;
 
-    if (resource.getFilePath() == NULL || resource.getFilePath() == "") {
+    if (resource.getFilePath().isEmpty()) {
         QHash<QString, QString> model;
         model.insert("{{uuid}}", resource.getUuid());
         model.insert("{{title}}", resource.getTitle());

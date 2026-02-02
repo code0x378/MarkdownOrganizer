@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
 
     QVariantMap options;
-    options.insert("anim", qVariantFromValue( new QtAwesomeAnimation(
+    options.insert("anim", QVariant::fromValue( new QtAwesomeAnimation(
                                                   beerButton) ) );
     beerButton->setIcon( awesome->icon( fa::beer, options  ) );
 

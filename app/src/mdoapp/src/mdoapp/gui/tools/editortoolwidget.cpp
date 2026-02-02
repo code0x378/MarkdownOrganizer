@@ -27,6 +27,7 @@
 #include <QSpacerItem>
 #include <QWebEngineView>
 #include <QWebEngineSettings>
+#include <QElapsedTimer>
 
 #include "SmtpMime"
 
@@ -67,7 +68,7 @@ EditorToolWidget::~EditorToolWidget()
 void EditorToolWidget::displayTags()
 {
     QList<QCheckBox *> checkboxes = ui->groupBoxTags->findChildren<QCheckBox *>();
-    for (QCheckBox *chk : checkboxes)
+    for (QCheckBox *chk : std::as_const(checkboxes))
         delete chk;
 
     int row = 1;
@@ -76,7 +77,7 @@ void EditorToolWidget::displayTags()
     QGridLayout *layout = new QGridLayout();
     delete ui->groupBoxTags->layout();
     ui->groupBoxTags->setLayout (layout);
-    foreach (QString tag, tags) {
+    Q_FOREACH (QString tag, tags) {
         layout->addWidget(new QCheckBox(tag), row - 1, col - 1, 1, 1);
         if (col % 3 == 0) {
             col = 1;
@@ -91,7 +92,7 @@ void EditorToolWidget::displayCategories()
 {
     QList<QCheckBox *>  checkboxes =
         ui->groupBoxCategories->findChildren<QCheckBox *>();
-    for (QCheckBox *chk : checkboxes)
+    for (QCheckBox *chk : std::as_const(checkboxes))
         delete chk;
 
     int row = 1;
@@ -100,7 +101,7 @@ void EditorToolWidget::displayCategories()
     QVBoxLayout *catLayout = new QVBoxLayout();
     delete ui->groupBoxCategories->layout();
     ui->groupBoxCategories->setLayout (catLayout);
-    foreach (QString category, categories) {
+    Q_FOREACH (QString category, categories) {
         catLayout->addWidget(new QCheckBox(category));
     }
     catLayout->addSpacerItem(new QSpacerItem(10, 10, QSizePolicy::Minimum,
@@ -272,7 +273,7 @@ void EditorToolWidget::handleSave()
 
     QString tags = "";
     QList<QCheckBox *> checkboxes = ui->groupBoxTags->findChildren<QCheckBox *>();
-    for (QCheckBox *chk : checkboxes) {
+    for (QCheckBox *chk : std::as_const(checkboxes)) {
         if (chk->isChecked())
             tags += "\"" + chk->text() + "\", ";
     }
@@ -286,7 +287,7 @@ void EditorToolWidget::handleSave()
 
     QString categories = "";
     checkboxes = ui->groupBoxCategories->findChildren<QCheckBox *>();
-    for (QCheckBox *chk : checkboxes) {
+    for (QCheckBox *chk : std::as_const(checkboxes)) {
         if (chk->isChecked())
             categories += "\"" + chk->text() + "\", ";
     }
@@ -304,7 +305,7 @@ void EditorToolWidget::handleSave()
     resource->setCategories(categories.replace("&", ""));
     resource->setDraft(ui->draftCheckBox->isChecked());
 
-    foreach (IPlugin *plugin,  PLUGIN_MANAGER->getPluginList()) {
+    Q_FOREACH (IPlugin *plugin,  PLUGIN_MANAGER->getPluginList()) {
         if (APP->getActiveProject()->getPlugins().contains(plugin->getName())) {
             plugin->save(*APP->getActiveProject(), *resource);
         }
@@ -334,12 +335,12 @@ void EditorToolWidget::handleReset()
 
 
     QList<QCheckBox *> checkboxes = ui->groupBoxTags->findChildren<QCheckBox *>();
-    for (QCheckBox *chk : checkboxes) {
+    for (QCheckBox *chk : std::as_const(checkboxes)) {
         chk->setChecked(false);
     }
 
     checkboxes = ui->groupBoxCategories->findChildren<QCheckBox *>();
-    for (QCheckBox *chk : checkboxes) {
+    for (QCheckBox *chk : std::as_const(checkboxes)) {
         chk->setChecked(false);
     }
     LOG_DEBUG("Editor reset");
@@ -348,14 +349,14 @@ void EditorToolWidget::handleReset()
 
 void EditorToolWidget::updatePreview()
 {
-    QTime t;
+    QElapsedTimer t;
     t.start();
     QString plainText;
     plainText  = ui->mdPlainTextEdit->toPlainText();
     plainText = QtUtils::removeFrontMatter(plainText);
     QString htmlText = QtUtils::markdownConverter(plainText);
 
-    emit htmlUpdated(htmlText);
+    Q_EMIT htmlUpdated(htmlText);
 
     //    //view->setHtml(QtUtils::wrapInHTMLDoc(htmlText, this->css));
         isDirty = true;

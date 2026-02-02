@@ -176,7 +176,7 @@ void MimePart::prepare()
     /* ------------------------ */
 
     /* Content-Id */
-    if (cId != NULL)
+    if (!cId.isEmpty())
         mimeString.append("Content-ID: <").append(cId).append(">\r\n");
     /* ---------- */
 

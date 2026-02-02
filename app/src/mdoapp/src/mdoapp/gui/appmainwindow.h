@@ -138,7 +138,7 @@ private:
 
     void readUISettings();
     void writeUISettings();
-private slots:
+private Q_SLOTS:
     void closeEvent(QCloseEvent *event);
     void showAboutDialog();
     void showSettingsDialog();

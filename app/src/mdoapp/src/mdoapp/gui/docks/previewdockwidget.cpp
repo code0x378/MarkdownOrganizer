@@ -17,11 +17,13 @@
 */
 
 #include "previewdockwidget.h"
+#include "qelapsedtimer.h"
 #include "ui_previewdockwidget.h"
 
 #include <QWebEngineView>
 #include <QWebEngineSettings>
-#include <QDesktopWidget>
+#include <QScreen>
+#include <QGuiApplication>
 
 #include "mdodockwidget.h"
 #include "mdocore/util/qtutils.h"
@@ -43,7 +45,7 @@ PreviewDockWidget::PreviewDockWidget(QWidget *parent) :
     ui->setupUi(this);
 
     view = new QWebEngineView(this);
-    view->setZoomFactor(APP->desktop()->logicalDpiX()/96.0*100.0/100);
+    view->setZoomFactor(APP->primaryScreen()->logicalDotsPerInchX()/96.0*100.0/100);
     view->settings()->setAttribute(QWebEngineSettings::FocusOnNavigationEnabled,
                                    false);
     QVBoxLayout *layout = new QVBoxLayout();
@@ -63,7 +65,7 @@ PreviewDockWidget::~PreviewDockWidget()
 
 void PreviewDockWidget::updatePreview(QString htmlText)
 {
-    QTime t;
+    QElapsedTimer t;
     t.start();
     view->setHtml(QtUtils::wrapInHTMLDoc(htmlText, this->css));
 

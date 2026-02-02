@@ -5,7 +5,9 @@ DESTDIR += $$PWD/../../../dist/dist-apps/plugins
 TEMPLATE = lib
 CONFIG += plugin
 
-QT += widgets printsupport testlib
+QT += widgets testlib
+
+CONFIG += c++17
 
 win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../../mdocore/release/ -lmdocore
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../../mdocore/debug/ -lmdocore

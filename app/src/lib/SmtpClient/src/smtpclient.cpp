@@ -202,7 +202,7 @@ bool SmtpClient::connectToHost()
 
     // Tries to connect to server
     if (!socket->waitForConnected(connectionTimeout)) {
-        emit smtpError(ConnectionTimeoutError);
+        Q_EMIT smtpError(ConnectionTimeoutError);
         return false;
     }
 
@@ -213,7 +213,7 @@ bool SmtpClient::connectToHost()
         // If the response code is not 220 (Service ready)
         // means that is something wrong with the server
         if (responseCode != 220) {
-            emit smtpError(ServerError);
+            Q_EMIT smtpError(ServerError);
             return false;
         }
 
@@ -226,7 +226,7 @@ bool SmtpClient::connectToHost()
 
         // The response code needs to be 250.
         if (responseCode != 250) {
-            emit smtpError(ServerError);
+            Q_EMIT smtpError(ServerError);
             return false;
         }
 
@@ -239,7 +239,7 @@ bool SmtpClient::connectToHost()
 
             // The response code needs to be 220.
             if (responseCode != 220) {
-                emit smtpError(ServerError);
+                Q_EMIT smtpError(ServerError);
                 return false;
             };
 
@@ -247,7 +247,7 @@ bool SmtpClient::connectToHost()
 
             if (!((QSslSocket *) socket)->waitForEncrypted(connectionTimeout)) {
                 qDebug() << ((QSslSocket *) socket)->errorString();
-                emit smtpError(ConnectionTimeoutError);
+                Q_EMIT smtpError(ConnectionTimeoutError);
                 return false;
             }
 
@@ -259,7 +259,7 @@ bool SmtpClient::connectToHost()
 
             // The response code needs to be 250.
             if (responseCode != 250) {
-                emit smtpError(ServerError);
+                Q_EMIT smtpError(ServerError);
                 return false;
             }
         }
@@ -284,15 +284,15 @@ bool SmtpClient::login(const QString &user, const QString &password,
     try {
         if (method == AuthPlain) {
             // Sending command: AUTH PLAIN base64('\0' + username + '\0' + password)
-            sendMessage("AUTH PLAIN " + QByteArray().append((char) 0).append(user).append((
-                                                                                              char) 0).append(password).toBase64());
+            sendMessage("AUTH PLAIN " + QByteArray().append((char) 0).append(user.toUtf8()).append((
+                                                                                              char) 0).append(password.toUtf8()).toBase64());
 
             // Wait for the server's response
             waitForResponse();
 
             // If the response is not 235 then the authentication was faild
             if (responseCode != 235) {
-                emit smtpError(AuthenticationFailedError);
+                Q_EMIT smtpError(AuthenticationFailedError);
                 return false;
             }
         } else if (method == AuthLogin) {
@@ -302,39 +302,39 @@ bool SmtpClient::login(const QString &user, const QString &password,
             // Wait for 334 response code
             waitForResponse();
             if (responseCode != 334) {
-                emit smtpError(AuthenticationFailedError);
+                Q_EMIT smtpError(AuthenticationFailedError);
                 return false;
             }
 
             // Send the username in base64
-            sendMessage(QByteArray().append(user).toBase64());
+            sendMessage(QByteArray().append(user.toUtf8()).toBase64());
 
             // Wait for 334
             waitForResponse();
             if (responseCode != 334) {
-                emit smtpError(AuthenticationFailedError);
+                Q_EMIT smtpError(AuthenticationFailedError);
                 return false;
             }
 
             // Send the password in base64
-            sendMessage(QByteArray().append(password).toBase64());
+            sendMessage(QByteArray().append(password.toUtf8()).toBase64());
 
             // Wait for the server's responce
             waitForResponse();
 
             // If the response is not 235 then the authentication was faild
             if (responseCode != 235) {
-                emit smtpError(AuthenticationFailedError);
+                Q_EMIT smtpError(AuthenticationFailedError);
                 return false;
             }
         }
     } catch (ResponseTimeoutException) {
         // Responce Timeout exceeded
-        emit smtpError(AuthenticationFailedError);
+        Q_EMIT smtpError(AuthenticationFailedError);
         return false;
     } catch (SendMessageTimeoutException) {
         // Send Timeout exceeded
-        emit smtpError(AuthenticationFailedError);
+        Q_EMIT smtpError(AuthenticationFailedError);
         return false;
     }
 
@@ -428,7 +428,7 @@ void SmtpClient::waitForResponse()
 {
     do {
         if (!socket->waitForReadyRead(responseTimeout)) {
-            emit smtpError(ResponseTimeoutError);
+            Q_EMIT smtpError(ResponseTimeoutError);
             throw ResponseTimeoutException();
         }
 
@@ -440,10 +440,10 @@ void SmtpClient::waitForResponse()
             responseCode = responseText.left(3).toInt();
 
             if (responseCode / 100 == 4)
-                emit smtpError(ServerError);
+                Q_EMIT smtpError(ServerError);
 
             if (responseCode / 100 == 5)
-                emit smtpError(ClientError);
+                Q_EMIT smtpError(ClientError);
 
             if (responseText[3] == ' ') {
                 return;
@@ -456,7 +456,7 @@ void SmtpClient::sendMessage(const QString &text)
 {
     socket->write(text.toUtf8() + "\r\n");
     if (! socket->waitForBytesWritten(sendMessageTimeout)) {
-        emit smtpError(SendDataTimeoutError);
+        Q_EMIT smtpError(SendDataTimeoutError);
         throw SendMessageTimeoutException();
     }
 }

@@ -38,7 +38,7 @@ public:
     explicit ProjectDialog(QWidget *parent = 0);
     ~ProjectDialog();
 
-private slots:
+private Q_SLOTS:
     void addProject();
     void deleteProject();
     void newProject();

@@ -34,7 +34,7 @@ public:
     explicit SettingsDialog(QWidget *parent = 0);
     ~SettingsDialog();
 
-private slots:
+private Q_SLOTS:
     void handleTreeMenuSelection(QTreeWidgetItem *item, int idx);
     void accept();
     void notifyToRestart();

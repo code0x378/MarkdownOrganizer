@@ -69,7 +69,7 @@ ProjectDialog::~ProjectDialog()
 void ProjectDialog::displayPlugins()
 {
     QList<QCheckBox *> checkboxes = ui->pluginGroupBox->findChildren<QCheckBox *>();
-    for (QCheckBox *chk : checkboxes)
+    for (QCheckBox *chk : std::as_const(checkboxes))
         delete chk;
 
     int row = 1;
@@ -79,7 +79,7 @@ void ProjectDialog::displayPlugins()
     delete ui->pluginGroupBox->layout();
     ui->pluginGroupBox->setLayout (layout);
 
-    foreach (IPlugin *plugin, PLUGIN_MANAGER->getPluginList()) {
+    Q_FOREACH (IPlugin *plugin, PLUGIN_MANAGER->getPluginList()) {
         QCheckBox *chk = new QCheckBox(plugin->getName());
         connect(chk, SIGNAL(clicked()), this, SLOT(onToggled()));
         layout->addWidget(chk, row - 1, col - 1, 1, 1);
@@ -97,7 +97,7 @@ QString ProjectDialog::getSelectedPlugins()
 {
     QString plugins;
     QList<QCheckBox *> checkboxes = ui->pluginGroupBox->findChildren<QCheckBox *>();
-    for (QCheckBox *chk : checkboxes)
+    for (QCheckBox *chk : std::as_const(checkboxes))
         if(chk->isChecked())
             plugins += chk->text() + ", ";
 
@@ -208,12 +208,12 @@ void ProjectDialog::updateSelectedTabs(const QModelIndex &index)
 
     QList<QCheckBox *> checkboxes = ui->pluginGroupBox->findChildren<QCheckBox *>();
 
-    for (QCheckBox *chk : checkboxes) {
+    for (QCheckBox *chk : std::as_const(checkboxes)) {
         chk->setChecked(false);
     }
 
-    for (QCheckBox *chk : checkboxes) {
-        for (QString pluginName : plugins.split(",")) {
+    for (QCheckBox *chk : std::as_const(checkboxes)) {
+        for (const QString &pluginName : plugins.split(",")) {
             if (chk->text() == pluginName.trimmed())
                 chk->setChecked(true);
         }

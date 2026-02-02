@@ -17,10 +17,9 @@
 */
 
 #include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <QQmlContext>
+#include <QtQml/QQmlApplicationEngine>
+#include <QtQml/QQmlContext>
 #include <QSettings>
-#include <QQuickStyle>
 
 #include "mdocore/global.h"
 
@@ -38,7 +37,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication app(argc, argv);
 
-    QQuickStyle::setStyle("Material");
+    // QQuickStyle::setStyle("Material");
     QQmlApplicationEngine engine;
     engine.load(QUrl("qrc:/mdomobile.qml"));
     if (engine.rootObjects().isEmpty())

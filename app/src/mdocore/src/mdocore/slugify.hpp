@@ -76,7 +76,7 @@ std::string slugify(std::string input)
     };
 
     // loop every character in charMap
-    for(auto kv : charMap)
+    for(const auto &kv : charMap)
     {
         // check if key is in string
         if(input.find(kv.first) != std::string::npos)
