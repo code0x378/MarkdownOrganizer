@@ -4,8 +4,8 @@ SUBDIRS = \
     lib/SmtpClient \
     mdocore \
     mdoapp \
-    mdoplugins
-    # mdowidget
+    mdoplugins \
+    mdowidget
     # mdomobile
 
 mdoapp.depends = SmtpClient

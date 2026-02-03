@@ -6,8 +6,6 @@ TEMPLATE = lib
 CONFIG += plugin
 
 ParentDirectory =  $$PWD/../../../build/hugoplugin
-release: $$ParentDirectory
-debug:   $$ParentDirectory
 RCC_DIR = $$ParentDirectory
 UI_DIR = $$ParentDirectory
 MOC_DIR = $$ParentDirectory

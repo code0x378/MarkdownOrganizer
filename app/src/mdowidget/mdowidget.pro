@@ -6,8 +6,6 @@ INCLUDEPATH += src
 DESTDIR += $$PWD/../../dist/dist-apps
 
 ParentDirectory =  $$PWD/../../build/markdownorganizer
-release: $$ParentDirectory
-debug:   $$ParentDirectory
 RCC_DIR = $$ParentDirectory
 UI_DIR = $$ParentDirectory
 MOC_DIR = $$ParentDirectory

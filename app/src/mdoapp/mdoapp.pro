@@ -59,11 +59,6 @@ FORMS += \
     src/mdoapp/gui/widgets/projectwidget.ui \
     src/mdoapp/gui/docks/previewdockwidget.ui
 
-OTHER_FILES +=
-
-RESOURCES += \
-    resources/mdoapp.qrc
-
 win32 {
     TARGET = "MarkdownOrganizer"
 }
