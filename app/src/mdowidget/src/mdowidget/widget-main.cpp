@@ -17,7 +17,8 @@
 */
 
 #include <QApplication>
-#include <QDesktopWidget>
+#include <QScreen>
+#include <QGuiApplication>
 #include <QtDebug>
 #include <QDir>
 #include <QFile>
@@ -96,22 +97,29 @@ int main(int argc, char *argv[])
     /********************************************************
      * Global Stylesheet
      ********************************************************/
-    QApplication::setStyle(QStyleFactory::create("Fusion"));
+    QString theme = SETTINGS_MANAGER->getString("Interface/Theme","Fusion");
 
-    QPalette palette;
-    palette.setColor(QPalette::Window, QColor(53,53,53));
-    palette.setColor(QPalette::WindowText, Qt::white);
-    palette.setColor(QPalette::Base, QColor(40,40,40));
-    palette.setColor(QPalette::AlternateBase, QColor(53,53,53));
-    palette.setColor(QPalette::ToolTipBase, Qt::white);
-    palette.setColor(QPalette::ToolTipText, Qt::white);
-    palette.setColor(QPalette::Text, Qt::white);
-    palette.setColor(QPalette::Button, QColor(53,53,53));
-    palette.setColor(QPalette::ButtonText, Qt::white);
-    palette.setColor(QPalette::BrightText, Qt::red);
-    palette.setColor(QPalette::Highlight, QColor(100,100,100).lighter());
-    palette.setColor(QPalette::HighlightedText, Qt::black);
-    qApp->setPalette(palette);
+    if(theme.contains("Fusion")) {
+
+        QApplication::setStyle(QStyleFactory::create("Fusion"));
+
+        if(theme.toLower().contains("dark")) {
+            QPalette palette;
+            palette.setColor(QPalette::Window, QColor(53,53,53));
+            palette.setColor(QPalette::WindowText, Qt::white);
+            palette.setColor(QPalette::Base, QColor(40,40,40));
+            palette.setColor(QPalette::AlternateBase, QColor(53,53,53));
+            palette.setColor(QPalette::ToolTipBase, Qt::white);
+            palette.setColor(QPalette::ToolTipText, Qt::white);
+            palette.setColor(QPalette::Text, Qt::white);
+            palette.setColor(QPalette::Button, QColor(53,53,53));
+            palette.setColor(QPalette::ButtonText, Qt::white);
+            palette.setColor(QPalette::BrightText, Qt::red);
+            palette.setColor(QPalette::Highlight, QColor(100,100,100).lighter());
+            palette.setColor(QPalette::HighlightedText, Qt::black);
+            qApp->setPalette(palette);
+        }
+    }
 
     QFile file(":/mdocore/mdocore.qss");
     file.open(QFile::ReadOnly);
@@ -156,35 +164,28 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    QSqlQuery query;
-    query.exec("SELECT name, description, workingDirectory, postSaveCommand, tags, categories, projectType, isDefault from projects");
+    QDir directory(qApp->applicationDirPath() + "/data/projects");
+    // QDir directory(*APP->getConfigDirectory() + "/data/projects");
+    QStringList dataFiles = directory.entryList(QStringList() << "*.ini", QDir::Files);
 
+    Q_FOREACH(QString fileName, dataFiles) {
 
-    while (query.next()) {
-        Project  project;
-        project.setName(query.value(0).toString());
-        project.setType(2);
-        project.setDescription(query.value(1).toString());
-        project.setWorkingDirectory(query.value(2).toString());
-        project.setPostSaveCommmand(query.value(3).toString());
-        project.setTags(query.value(4).toString());
-        project.setCategories(query.value(5).toString());
-        project.setType(query.value(6).toInt());
-        project.setIsDefault(query.value(7).toBool());
-        app.getProjects()->insert(project.getName(), &project);
-        if (project.getIsDefault() == 1) {
-            app.setActiveProject(&project);
+        Project *project = Project::loadProject(fileName);
+
+        if (project->getIsDefault() == 1) {
+            app.setActiveProject(project);
             app.getActiveProject()->setCurrentDirectory(
                 app.getActiveProject()->getWorkingDirectory());
         }
-    }
 
+        app.getProjects()->insert(project->getName(), project);
+    }
 
     /********************************************************
      * Manage main Window
      ********************************************************/
     MAINWINDOW;
-    QRect rec = QApplication::desktop()->screenGeometry();
+    QRect rec = QApplication::primaryScreen()->geometry();
     int width = rec.width();
     int windowHeight = 600;
     int windowWidth = 350;

@@ -29,8 +29,9 @@
 #include <QToolBar>
 #include <QToolTip>
 #include <QDockWidget>
-#include <QDesktopWidget>
-#include <QTimer>
+#include <QScreen>
+#include <QGuiApplication>
+#include <QElapsedTimer>
 #include <QPushButton>
 #include <QLabel>
 #include <QHBoxLayout>
@@ -264,7 +265,7 @@ void WidgetMainWindow::openWebBrowser()
 void WidgetMainWindow::launchMainApp()
 {
     QString path = QCoreApplication::applicationDirPath();
-    path.append("/markdownorganizer-app");
+    path.append("/MarkdownOrganizer.sh");
 
     QProcess process;
     process.startDetached(path, QStringList());
@@ -434,7 +435,7 @@ void WidgetMainWindow::trayIconClicked(QSystemTrayIcon::ActivationReason reason)
 
 void WidgetMainWindow::updatePreview()
 {
-    QTime t;
+    QElapsedTimer t;
     t.start();
     QString plainText  = ui->plainTextEdit->toPlainText();
     plainText = QtUtils::removeFrontMatter(plainText);
